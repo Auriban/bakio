@@ -1,0 +1,667 @@
+/* ===================================
+   RESET Y BASE
+   =================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+/* ===================================
+   TIPOGRAFÍA
+   =================================== */
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    color: white;
+    line-height: 1.2;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 600;
+    color: #1e2746;
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #3b4255;
+}
+
+.italic-title {
+    font-style: italic;
+    font-weight: 400;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #8FAAAD;
+    font-weight: 600;
+}
+
+/* ===================================
+   LAYOUT Y CONTENEDORES
+   =================================== */
+.container {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.flexi {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.gap-40 {
+    gap: 40px;
+}
+
+/* Grid columns - Mobile first */
+.col-12 {
+    width: 100%;
+}
+
+/* ===================================
+   HEADER Y NAVEGACIÓN
+   =================================== */
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 0;
+    gap: 10px;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul a {
+    padding: 10px 20px;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+nav ul a:hover {
+    color: #8FAAAD;
+}
+
+/* ===================================
+   PORTADA HERO
+   =================================== */
+.fportada {
+    position: relative;
+    background-image: url(../assets/inicio/portada.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fportada::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.fportada-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 100px 20px 80px;
+}
+
+.fportada-content h1 {
+    margin-bottom: 50px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+/* ===================================
+   SEARCH BAR / FORMULARIO RESERVA
+   =================================== */
+.search-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+
+.search-bar .field {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.search-bar .field label {
+    font-size: 0.85rem;
+    color: #fff;
+    margin-bottom: 6px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.search-bar .field input,
+.search-bar .field select {
+    padding: 12px 15px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    font-family: 'Nunito', sans-serif;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.search-bar .field input::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+.search-bar .field input:hover,
+.search-bar .field input:focus,
+.search-bar .field select:hover,
+.search-bar .field select:focus {
+    background: rgba(255,255,255,0.25);
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.search-bar .arrow {
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+    align-self: center;
+}
+
+.search-bar .btn-reservar {
+    padding: 14px 30px;
+    border: none;
+    border-radius: 6px;
+    background: #8FAAAD;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.search-bar .btn-reservar:hover {
+    background: #48595A;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    transform: translateY(-2px);
+}
+
+/* ===================================
+   SECCIÓN CON RAYAS
+   =================================== */
+.fRaya {
+    background-image: url(../assets/inicio/rayas.png);
+    background-repeat: repeat;
+    background-size: auto;
+    padding: 80px 0;
+}
+
+.fRaya .card {
+    width: 90%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: #EEE9E4;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    text-align: center;
+}
+
+.fRaya .card .subtitle {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.fRaya .card h2 {
+    margin-bottom: 25px;
+}
+
+.fRaya .card .description {
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+/* ===================================
+   BOTONES
+   =================================== */
+.btn-link {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #323852;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-link:hover {
+    background: #8FAAAD;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* ===================================
+   SECCIONES GENERALES
+   =================================== */
+section {
+    padding: 60px 0;
+}
+
+.section-lugar-perfecto,
+.section-experiencia,
+.section-rincones {
+    background: #f9f9f9;
+}
+
+/* ===================================
+   GRIDS DE IMÁGENES
+   =================================== */
+.image-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.galeria-grid,
+.rincones-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.galeria-grid img,
+.rincones-grid img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 6px;
+    transition: transform 0.3s ease;
+}
+
+.galeria-grid img:hover,
+.rincones-grid img:hover {
+    transform: scale(1.05);
+}
+
+/* ===================================
+   SERVICIOS
+   =================================== */
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.servicio-item {
+    text-align: center;
+}
+
+.servicio-item img {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 15px;
+}
+
+.servicio-item p {
+    font-size: 0.9rem;
+    color: #3b4255;
+    font-weight: 600;
+}
+
+/* ===================================
+   RESEÑAS
+   =================================== */
+.section-reviews {
+    background: #8FAAAD;
+    color: white;
+}
+
+.section-reviews h2 {
+    color: white;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
+.review-card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.review-rating {
+    color: #FFD700;
+    font-size: 1.1rem;
+}
+
+.review-date {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.8);
+}
+
+.review-text {
+    color: white;
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+
+.review-author {
+    color: rgba(255,255,255,0.9);
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+/* ===================================
+   MAPA
+   =================================== */
+.section-mapa {
+    padding: 80px 0;
+}
+
+.mapa-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+footer {
+    background: #323852;
+    color: white;
+    padding: 50px 0 30px;
+}
+
+footer h3 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+footer p {
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 10px;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: rgba(255,255,255,0.8);
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #8FAAAD;
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 0.9rem;
+}
+
+/* ===================================
+   UTILIDADES
+   =================================== */
+.text-center {
+    text-align: center;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mb-40 {
+    margin-bottom: 40px;
+}
+
+.mb-50 {
+    margin-bottom: 50px;
+}
+
+.mt-50 {
+    margin-top: 50px;
+}
+
+.w80 {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* ===================================
+   RESPONSIVE - TABLET
+   =================================== */
+@media (min-width: 768px) {
+    .col-md-1 { width: 8.333333%; }
+    .col-md-2 { width: 16.666667%; }
+    .col-md-3 { width: 25%; }
+    .col-md-4 { width: 33.333333%; }
+    .col-md-5 { width: 41.666667%; }
+    .col-md-6 { width: 50%; }
+    .col-md-7 { width: 58.333333%; }
+    .col-md-8 { width: 66.666667%; }
+    .col-md-9 { width: 75%; }
+    .col-md-10 { width: 83.333333%; }
+    .col-md-11 { width: 91.666667%; }
+    .col-md-12 { width: 100%; }
+
+    .galeria-grid,
+    .rincones-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .servicios-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ===================================
+   RESPONSIVE - DESKTOP
+   =================================== */
+@media (min-width: 1200px) {
+    .col-lg-1 { width: 8.333333%; }
+    .col-lg-2 { width: 16.666667%; }
+    .col-lg-3 { width: 25%; }
+    .col-lg-4 { width: 33.333333%; }
+    .col-lg-5 { width: 41.666667%; }
+    .col-lg-6 { width: 50%; }
+    .col-lg-7 { width: 58.333333%; }
+    .col-lg-8 { width: 66.666667%; }
+    .col-lg-9 { width: 75%; }
+    .col-lg-10 { width: 83.333333%; }
+    .col-lg-11 { width: 91.666667%; }
+    .col-lg-12 { width: 100%; }
+
+    /* Hero section en desktop */
+    .fportada {
+        min-height: 100vh;
+    }
+
+    .fportada-content {
+        text-align: left;
+        padding-top: 150px;
+    }
+
+    /* Search bar en desktop */
+    .search-bar {
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        flex-direction: row;
+        max-width: none;
+        width: auto;
+        padding: 25px 35px;
+        background: #323852;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border: none;
+        gap: 20px;
+    }
+
+    .search-bar .field {
+        width: auto;
+        min-width: 150px;
+    }
+
+    .search-bar .field input,
+    .search-bar .field select {
+        background: #EDE8E2;
+        color: #323852;
+    }
+
+    .search-bar .field input::placeholder {
+        color: #999;
+    }
+
+    .search-bar .arrow {
+        margin: 0 10px;
+        align-self: flex-end;
+        margin-bottom: 12px;
+    }
+
+    /* Grids más grandes */
+    .image-grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .galeria-grid img,
+    .rincones-grid img {
+        height: 300px;
+    }
+
+    .reviews-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .servicios-grid {
+        grid-template-columns: repeat(8, 1fr);
+        gap: 40px;
+    }
+
+    /* Cards más grandes */
+    .fRaya .card {
+        max-width: 900px;
+        padding: 60px 80px;
+    }
+
+    section {
+        padding: 100px 0;
+    }
+}

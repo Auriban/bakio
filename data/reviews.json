@@ -1,0 +1,32 @@
+[
+  {
+    "nombre": "Claudia",
+    "fecha": "hace 5 días",
+    "comentario": "Apartamento impecable y con unas vistas increíbles. Repetiremos sin duda.",
+    "puntuacion": 5
+  },
+  {
+    "nombre": "Antonio",
+    "fecha": "hace 3 días",
+    "comentario": "Muy limpio, acogedor y a 5 minutos de la playa. Volveremos sin duda.",
+    "puntuacion": 5
+  },
+  {
+    "nombre": "Lucía",
+    "fecha": "hace 1 semana",
+    "comentario": "El anfitrión súper amable. Todo perfecto.",
+    "puntuacion": 4
+  },
+  {
+    "nombre": "María",
+    "fecha": "hace 4 días",
+    "comentario": "Ubicación inmejorable y apartamento muy cómodo.",
+    "puntuacion": 5
+  },
+  {
+    "nombre": "Jorge",
+    "fecha": "hace 2 semanas",
+    "comentario": "Las vistas al mar son espectaculares. Tranquilidad total.",
+    "puntuacion": 5
+  }
+]

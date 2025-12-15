@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balcón de Bakio</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="recomendados.html">Recomendados</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="fportada">
+            <div class="fportada-content">
+                <div>
+                    <h1>EL BALCÓN DE BAKIO</h1>
+                </div>
+
+                <div class="search-bar">
+                    <div class="field">
+                        <input type="date">
+                    </div>
+
+                    <span class="arrow">→</span>
+
+                    <div class="field">
+                        <input type="date">
+                    </div>
+
+                    <div class="field">
+                        <select>
+                            <option selected>Huéspedes</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+
+                    <button class="btn-reservar">Reservar</button>
+                </div>
+            </div>
+        </section>
+
+        <section >
+            <article class="fRaya">
+                <div class="card w80">
+                    <p class="mb20">El Balcón de Bakio</p>
+                    <h2 class="mb20">Vistas que se Quedan para Siempre</h2>
+                    <p class="mb20">Disfruta de la luz natural que llena cada estancia, de las vistas infinitas al mar y de un ambiente sereno pensado para el descanso. El Balcón de Bakio es el lugar perfecto para desconectar en pareja, en familia o en una escapada tranquila. Cada rincón está diseñado para hacerte sentir como en casa. Mira tú mismo lo que te espera.</p>
+                    <a class="btnA" href="alojamiento.html">Ver alojamiento</a>
+                </div>
+            </article>
+            <article class="flex mb150">
+                <div class="col-12 col-md-6 col-lg-7 alvert card1">
+                    <h2 class="mb20">Un lugar perfecto para Desconectar</h2>
+                    <p>Apartamento en Bakio ideal para familias, con dos dormitorios, salón comedor y terraza. Totalmente equipado, a solo 300 m de la playa y cerca de Gaztelugatxe, Urdaibai y Bilbao. Perfecto para descansar y descubrir Bizkaia. <br> Un mejor precio garantizado. </p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-6 p-0 ">
+                    <img  class="p-0" src="assets/inicio/inicio1.jpg" alt="">
+                    <img class="p-0" src="assets/inicio/inicio2.jpg" alt="">
+                </div>
+            </article>
+            <article class="galeria-modern mb150">
+                <img src="assets/inicio/galeria1.jpg" alt="">
+                <img src="assets/inicio/galeria2.jpg" alt="">
+                <img src="assets/inicio/galeria3.jpg" alt="">
+                <img src="assets/inicio/galeria4.jpg" alt="">
+                <img src="assets/inicio/galeria5.jpg" alt="">
+                <img src="assets/inicio/galeria6.jpg" alt="">
+            </article>
+        </section>
+
+        <section class="mb100">
+            <article class="flexi w80">
+                <div class="col-12 col-lg-6 mb50 alvert">
+                    <h2>Vive la experiencia de El Balcón de Bakio</h2>
+                </div>
+               
+                <div class="col-12 col-lg-6">
+                    <p class="mb20">Este espacio ha sido pensado para que disfrutes de cada momento, con todas las comodidades que necesitas y el encanto de un entorno único. Desde el sonido del mar hasta los pequeños detalles del día a día, todo está preparado para que tu estancia sea cómoda, relajada y memorable.</p>
+                    
+                    <button class="btn-open" onclick="openModal()">
+                        <i class="fa-solid fa-list-check"></i>
+                        Ver Servicios
+                    </button>
+                </div>  
+
+                <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+                    <div class="modal" onclick="event.stopPropagation()">
+                    <div class="modal-header">
+                        <div class="drag-indicator"></div>
+                        <h2>¿Qué hay en este alojamiento?</h2>
+                        <button class="btn-close" onclick="closeModal()">
+                        <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                    <div class="modal-content">
+                        
+                        <!-- Vistas panorámicas -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-mountain-sun"></i></div>
+                            <h3>Vistas panorámicas</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-water"></i><span class="item-text">Vistas a la bahía</span></div>
+                            <div class="item"><i class="fa-solid fa-umbrella-beach"></i><span class="item-text">Vistas a la playa</span></div>
+                            <div class="item"><i class="fa-solid fa-ship"></i><span class="item-text">Vistas al mar</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Baño -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-bath"></i></div>
+                            <h3>Baño</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-bath"></i><span class="item-text">Bañera</span></div>
+                            <div class="item"><i class="fa-solid fa-wind"></i><span class="item-text">Secador de pelo</span></div>
+                            <div class="item"><i class="fa-solid fa-spray-can-sparkles"></i><span class="item-text">Productos de limpieza</span></div>
+                            <div class="item"><i class="fa-solid fa-pump-soap"></i><span class="item-text">Champú</span></div>
+                            <div class="item"><i class="fa-solid fa-bottle-droplet"></i><span class="item-text">Acondicionador</span></div>
+                            <div class="item"><i class="fa-solid fa-soap"></i><span class="item-text">Gel de ducha</span></div>
+                            <div class="item"><i class="fa-solid fa-toilet"></i><span class="item-text">Bidé</span></div>
+                            <div class="item"><i class="fa-solid fa-shower"></i><span class="item-text">Ducha exterior</span></div>
+                            <div class="item"><i class="fa-solid fa-temperature-high"></i><span class="item-text">Agua caliente</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Dormitorio y lavandería -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-bed"></i></div>
+                            <h3>Dormitorio y lavandería</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-shirt"></i><span class="item-text">Lavadora</span></div>
+                            <div class="item"><i class="fa-solid fa-vest-patches"></i><span class="item-text">Perchas</span></div>
+                            <div class="item"><i class="fa-solid fa-bed"></i><span class="item-text">Ropa de cama</span></div>
+                            <div class="item"><i class="fa-solid fa-blinds"></i><span class="item-text">Persianas o cortinas opacas</span></div>
+                            <div class="item"><i class="fa-solid fa-shirt"></i><span class="item-text">Plancha</span></div>
+                            <div class="item"><i class="fa-solid fa-t-shirt"></i><span class="item-text">Tendedero para ropa</span></div>
+                            <div class="item"><i class="fa-solid fa-box-archive"></i><span class="item-text">Espacio para guardar la ropa</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Entretenimiento -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-tv"></i></div>
+                            <h3>Entretenimiento</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-tv"></i><span class="item-text">TV</span></div>
+                            <div class="item"><i class="fa-solid fa-gamepad"></i><span class="item-text">Juegos recreativos</span></div>
+                            <div class="item"><i class="fa-solid fa-book"></i><span class="item-text">Libros y material de lectura</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Para familias -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-baby"></i></div>
+                            <h3>Para familias</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item">
+                            <i class="fa-solid fa-baby-carriage"></i>
+                            <div><span class="item-text">Parque/cunas de viaje</span><div class="item-desc">Disponible previa solicitud</div></div>
+                            </div>
+                            <div class="item"><i class="fa-solid fa-blinds"></i><span class="item-text">Persianas o cortinas opacas</span></div>
+                            <div class="item"><i class="fa-solid fa-child"></i><span class="item-text">Libros y juguetes para niños</span></div>
+                            <div class="item"><i class="fa-solid fa-utensils"></i><span class="item-text">Platos y cubiertos para niños</span></div>
+                            <div class="item"><i class="fa-solid fa-plug"></i><span class="item-text">Protectores de enchufes</span></div>
+                            <div class="item"><i class="fa-solid fa-chess-board"></i><span class="item-text">Juegos de mesa</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Calefacción y refrigeración -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-temperature-half"></i></div>
+                            <h3>Calefacción y refrigeración</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-fan"></i><span class="item-text">Ventiladores portátiles</span></div>
+                            <div class="item"><i class="fa-solid fa-fire"></i><span class="item-text">Calefacción</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Seguridad en el hogar -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                            <h3>Seguridad en el hogar</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-bell"></i><span class="item-text">Detector de humo</span></div>
+                            <div class="item"><i class="fa-solid fa-circle-exclamation"></i><span class="item-text">Detector de monóxido de carbono</span></div>
+                            <div class="item"><i class="fa-solid fa-kit-medical"></i><span class="item-text">Botiquín</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Internet y oficina -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-wifi"></i></div>
+                            <h3>Internet y oficina</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-wifi"></i><span class="item-text">Wifi</span></div>
+                            <div class="item"><i class="fa-solid fa-laptop"></i><span class="item-text">Zona para trabajar</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Cocina y comedor -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-utensils"></i></div>
+                            <h3>Cocina y comedor</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-kitchen-set"></i><span class="item-text">Cocina</span></div>
+                            <div class="item"><i class="fa-solid fa-fire-burner"></i><span class="item-text">Zona donde los viajeros pueden cocinar</span></div>
+                            <div class="item"><i class="fa-solid fa-box"></i><span class="item-text">Frigorífico</span></div>
+                            <div class="item"><i class="fa-solid fa-clock-rotate-left"></i><span class="item-text">Microondas</span></div>
+                            <div class="item">
+                            <i class="fa-solid fa-spoon"></i>
+                            <div><span class="item-text">Utensilios básicos de cocina</span><div class="item-desc">Cazuelas y sartenes, aceite, sal y pimienta</div></div>
+                            </div>
+                            <div class="item">
+                            <i class="fa-solid fa-plate-wheat"></i>
+                            <div><span class="item-text">Platos y cubiertos</span><div class="item-desc">Cuencos, palillos, platos, tazas, etc.</div></div>
+                            </div>
+                            <div class="item"><i class="fa-solid fa-snowflake"></i><span class="item-text">Congelador</span></div>
+                            <div class="item"><i class="fa-solid fa-faucet-drip"></i><span class="item-text">Lavavajillas</span></div>
+                            <div class="item"><i class="fa-solid fa-fire-flame-simple"></i><span class="item-text">Fogón</span></div>
+                            <div class="item"><i class="fa-solid fa-square"></i><span class="item-text">Horno</span></div>
+                            <div class="item"><i class="fa-solid fa-mug-hot"></i><span class="item-text">Hervidor de agua</span></div>
+                            <div class="item"><i class="fa-solid fa-mug-saucer"></i><span class="item-text">Cafetera</span></div>
+                            <div class="item"><i class="fa-solid fa-wine-glass"></i><span class="item-text">Copas de vino</span></div>
+                            <div class="item"><i class="fa-solid fa-bread-slice"></i><span class="item-text">Tostadora</span></div>
+                            <div class="item"><i class="fa-solid fa-blender"></i><span class="item-text">Batidora</span></div>
+                            <div class="item"><i class="fa-solid fa-chair"></i><span class="item-text">Mesa de comedor</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Características de la ubicación -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <h3>Características de la ubicación</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item">
+                            <i class="fa-solid fa-door-open"></i>
+                            <div><span class="item-text">Entrada independiente</span><div class="item-desc">Entrada por otra calle o edificio</div></div>
+                            </div>
+                            <div class="item"><i class="fa-solid fa-jug-detergent"></i><span class="item-text">Lavandería cercana</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Exterior -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-tree"></i></div>
+                            <h3>Exterior</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-building"></i><span class="item-text">Patio privado o balcón</span></div>
+                            <div class="item"><i class="fa-solid fa-couch"></i><span class="item-text">Mobiliario exterior</span></div>
+                            <div class="item"><i class="fa-solid fa-fire"></i><span class="item-text">Barbacoa</span></div>
+                            <div class="item">
+                            <i class="fa-solid fa-umbrella-beach"></i>
+                            <div><span class="item-text">Elementos básicos para la playa</span><div class="item-desc">Toallas de playa, sombrilla, esterilla, equipo de snorkel</div></div>
+                            </div>
+                            <div class="item"><i class="fa-solid fa-person-swimming"></i><span class="item-text">Tumbonas</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Aparcamiento e instalaciones -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-square-parking"></i></div>
+                            <h3>Aparcamiento e instalaciones</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-car"></i><span class="item-text">Aparcamiento gratuito en las instalaciones</span></div>
+                            <div class="item">
+                            <i class="fa-solid fa-elevator"></i>
+                            <div><span class="item-text">Ascensor</span><div class="item-desc">El alojamiento o edificio dispone de un ascensor de al menos 132 cm de profundidad cuya puerta mide como mínimo 81 cm de ancho</div></div>
+                            </div>
+                        </div>
+                        </div>
+
+                        <!-- Servicios -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-concierge-bell"></i></div>
+                            <h3>Servicios</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item">
+                            <i class="fa-solid fa-suitcase-rolling"></i>
+                            <div><span class="item-text">Se permite dejar el equipaje</span><div class="item-desc">Para los viajeros que lleguen temprano o que se marchen después de la hora estipulada</div></div>
+                            </div>
+                            <div class="item">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <div><span class="item-text">Disponible para estancias largas</span><div class="item-desc">Permite estancias de 28 días o más</div></div>
+                            </div>
+                            <div class="item">
+                            <i class="fa-solid fa-key"></i>
+                            <div><span class="item-text">Llegada autónoma</span><div class="item-desc">Caja de seguridad para llaves</div></div>
+                            </div>
+                            <div class="item"><i class="fa-solid fa-handshake"></i><span class="item-text">Recepción por parte del anfitrión</span></div>
+                        </div>
+                        </div>
+
+                        <!-- No incluidos -->
+                        <div class="category not-available">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-circle-xmark"></i></div>
+                            <h3>No incluidos</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-video"></i><span class="item-text">Cámaras de seguridad en los exteriores de la propiedad</span></div>
+                            <div class="item"><i class="fa-solid fa-wind"></i><span class="item-text">Secadora</span></div>
+                            <div class="item"><i class="fa-solid fa-snowflake"></i><span class="item-text">Aire acondicionado</span></div>
+                            <div class="item"><i class="fa-solid fa-box-open"></i><span class="item-text">Servicios básicos</span></div>
+                        </div>
+                        </div>
+
+                    </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="servicios-bakio mb150">
+            <div class="icon-item">
+                <i class="fa-solid fa-people-group"></i>
+                <p>4 personas</p>
+            </div>
+
+            <div class="icon-item">
+                <i class="fa-solid fa-umbrella-beach"></i>
+                <p>Vistas al mar</p>
+            </div>
+
+            <div class="icon-item">
+                <i class="fa-solid fa-wifi"></i>
+                <p>WiFi</p>
+            </div>
+
+            <div class="icon-item">
+                <i class="fa-solid fa-tv"></i>
+                <p>Smart TV</p>
+            </div>
+
+            <div class="icon-item">
+                <i class="fa-solid fa-square-parking"></i>
+                <p>Aparcamiento gratis</p>
+            </div>
+
+            <div class="icon-item">
+                <i class="fa-solid fa-bed"></i>
+                <p>Dos dormitorios</p>
+            </div>
+
+
+            <div class="icon-item">
+                <i class="fa-solid fa-elevator"></i>
+                <p>Ascensor</p>
+            </div>
+
+            <div class="icon-item">
+                <i class="fa-solid fa-temperature-three-quarters"></i>
+                <p>Calefacción</p>
+            </div>
+
+            <div class="icon-item">
+                <i class="fa-solid fa-hand-holding-droplet"></i>
+                <p>Lavavajillas</p>
+            </div>
+
+            <div class="icon-item">
+                <i class="fa-solid fa-house-flood-water"></i>
+                <p>Balcón</p>
+            </div>
+        </section>
+
+        <section class="reviews-section mb150">
+            <p class="reviews-subtitle">Escucha las opiniones de otros huéspedes</p>
+            <h2 class="reviews-title">4.98 Airbnb y 4.6 Booking puntuación</h2>
+
+            <div class="reviews-carousel" id="reviewsCarousel">
+            <!-- aquí las cards -->
+            </div>
+
+            <div class="reviews-scrollbar">
+                <div class="scrollbar-thumb"></div>
+            </div>
+
+        </section>
+
+        <section class="mb100">
+            <article class="flexi w80">
+                <div class="col-12 col-lg-7 mb50 alvert">
+                    <h2 class="f100">Nuestros rincones favoritos</h2>
+                </div>
+                <div class="col-12 col-lg-5">
+                    <p class="mb20">Nos encanta compartir este rincón con vosotros. Aquí os dejamos nuestros lugares y restaurantes favoritos, los mismos a los que vamos en familia, para que disfrutéis Bakio y sus alrededores como si fuerais de aquí.</p>
+                    <a class="btnA" href="recomendaciones.html">Descubre más sitios</a>
+                </div>
+            </article>
+        </section>
+
+        <section class="cerca-nosotros mb250">
+            <div class="cerca-bg">
+                <!-- SLIDER mobile (debajo de la card, pero visualmente por detrás) -->
+                <div class="galeria-slider-mobile">
+                <div class="slide active">
+                    <img src="assets/inicio/rincon1.jpg" alt="Foto 1">
+                </div>
+                <div class="slide">
+                    <img src="assets/inicio/rincon2.jpg" alt="Foto 2">
+                </div>
+                <div class="slide">
+                    <img src="assets/inicio/rincon3.jpg" alt="Foto 3">
+                </div>
+                <div class="slide">
+                    <img src="assets/inicio/rincon4.jpg" alt="Foto 4">
+                </div>
+                </div>
+
+                <!-- Card de texto, siempre por encima -->
+                <div class="cerca-card">
+                <h3 class="mb10">Cerca de nosotros</h3>
+                <p>
+                    <strong>A 300 metros del centro y de la playa.</strong><br>
+                    Maravillosas vistas a <strong>Gaztelugatxe</strong> (5 km) y playa de Bakio.
+                    Bilbao a 28 km y Aeropuerto a 20 km. Perfecto para familias. Actividades
+                    (escuelas de surf, senderismo, gastronomía…)
+                </p>
+                </div>
+            </div>
+            <!-- GALERÍA DESKTOP (4 columnas) -->
+            <div class="galeria-desktop">
+                <img src="assets/inicio/rincon1.jpg" alt="Foto 1">
+                <img src="assets/inicio/rincon2.jpg" alt="Foto 2">
+                <img src="assets/inicio/rincon3.jpg" alt="Foto 3">
+                <img src="assets/inicio/rincon4.jpg" alt="Foto 4">
+            </div>
+        </section>
+
+        <section class="fRaya ubicacion-section mb150">
+            <div class="ubicacion-wrapper">
+
+                <!-- Card de texto -->
+                <div class="ubicacion-card">
+                <h2>¡Aquí te esperamos!</h2>
+                <p class="ubicacion-subtitulo">Nuestra dirección</p>
+                <p class="ubicacion-direccion">
+                    Birjilandako Bidea, 5, 48130 Bakio, Bizkaia
+                </p>
+                </div>
+
+                <!-- Contenedor del mapa -->
+                <div class="ubicacion-mapa">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2897.3884705406513!2d-2.814799624010065!3d43.431602071113446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4036727cfe85%3A0x8225b5bc337d7022!2sBirjilandako%20Bidea%2C%205%2C%2048130%20Urkitzaur%2C%20Bizkaia!5e0!3m2!1ses!2ses!4v1764508058687!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Mapa ubicación El Balcón de Bakio"></iframe>
+                </div>
+
+
+            </div>
+        </section>
+
+
+
+    </main>
+    <footer></footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
