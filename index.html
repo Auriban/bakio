@@ -13,15 +13,29 @@
 
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="recomendados.html">Recomendados</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
+    <header class="header">
+        <div class="menu-wrapper">
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <a href="contacto.html#calendario" class="btn-reservar">RESERVAR</a>
+        </div>
     </header>
+
+    <!-- Menú desplegable -->
+    <div class="menu-overlay" id="menu">
+        <button class="menu-close" aria-label="Cerrar menú">&times;</button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="alojamiento.html">Alojamiento</a></li>
+                    <li><a href="recomendados.html">Recomendaciones</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+    </div>
     <main>
         <section class="fportada">
             <div class="fportada-content">
@@ -425,7 +439,7 @@
                 </div>
                 <div class="col-12 col-lg-5">
                     <p class="mb20">Nos encanta compartir este rincón con vosotros. Aquí os dejamos nuestros lugares y restaurantes favoritos, los mismos a los que vamos en familia, para que disfrutéis Bakio y sus alrededores como si fuerais de aquí.</p>
-                    <a class="btnA" href="recomendaciones.html">Descubre más sitios</a>
+                    <a class="btnA" href="recomendados.html">Descubre más sitios</a>
                 </div>
             </article>
         </section>

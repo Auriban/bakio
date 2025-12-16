@@ -1,177 +1,300 @@
 // ================================
+// VARIABLES GLOBALES
+// ================================
+
+// Carrusel de reviews
+let reviewsCarousel, reviewsScrollbar, reviewsThumb;
+let isReviewsDragging = false;
+let reviewsStartX, reviewsStartScrollLeft;
+
+// Slider principal (cards sabor y calma)
+let mainSlider, mainScrollbar, mainThumb;
+let currentIndex = 0;
+let isMainDragging = false;
+let mainStartX, mainStartLeft;
+
+// ================================
+// UTILIDADES
+// ================================
+function isDesktop() {
+  return window.matchMedia('(min-width: 768px)').matches;
+}
+
+// ================================
 // CARGAR REVIEWS DESDE JSON
 // ================================
 async function loadReviews() {
-    try {
-        const response = await fetch("data/reviews.json");
-        const reviews = await response.json();
-
-        const carousel = document.getElementById("reviewsCarousel");
-        if (!carousel) return;
-
-        carousel.innerHTML = "";
-
-        reviews.forEach(r => {
-            const stars = "★".repeat(r.puntuacion) + "☆".repeat(5 - r.puntuacion);
-
-            const card = document.createElement("div");
-            card.className = "review-card";
-            card.innerHTML = `
-                <span class="review-date">${r.fecha}</span>
-                <p class ="review-nombre">${r.nombre}</p>
-                <p>"${r.comentario}"</p>
-                <div class="review-stars">${stars}</div>
-            `;
-
-            carousel.appendChild(card);
-        });
-
-        // Recalcular scrollbar después de cargar
-        setTimeout(() => {
-            recalcThumb();
-        }, 200);
-
-    } catch (error) {
-        console.error("Error cargando reviews:", error);
+  try {
+    const response = await fetch("data/reviews.json");
+    if (!response.ok) {
+      console.error("Archivo reviews.json no encontrado");
+      return;
     }
+
+    const reviews = await response.json();
+    const carouselElement = document.getElementById("reviewsCarousel");
+    if (!carouselElement) return;
+
+    carouselElement.innerHTML = "";
+
+    reviews.forEach(r => {
+      const stars = "★".repeat(r.puntuacion) + "☆".repeat(5 - r.puntuacion);
+
+      const card = document.createElement("div");
+      card.className = "review-card";
+      card.innerHTML = `
+        <span class="review-date">${r.fecha}</span>
+        <p class="review-nombre">${r.nombre}</p>
+        <p>"${r.comentario}"</p>
+        <div class="review-stars">${stars}</div>
+      `;
+
+      carouselElement.appendChild(card);
+    });
+
+    setTimeout(() => {
+      recalcReviewsThumb();
+    }, 200);
+  } catch (error) {
+    console.error("Error cargando reviews:", error);
+  }
 }
 
 // ================================
-// SCROLLBAR PERSONALIZADA
+// SCROLLBAR PERSONALIZADA REVIEWS
 // ================================
-let carousel, scrollbar, thumb;
-let isDragging = false;
-let startX, startScrollLeft;
+function initReviewsScrollbar() {
+  reviewsCarousel  = document.getElementById("reviewsCarousel");
+  reviewsScrollbar = document.querySelector(".reviews-scrollbar");
+  reviewsThumb     = document.querySelector(".reviews-scrollbar .scrollbar-thumb");
 
-function initScrollbar() {
-    carousel = document.getElementById("reviewsCarousel");
-    scrollbar = document.querySelector(".reviews-scrollbar");
-    thumb = document.querySelector(".scrollbar-thumb");
+  if (!reviewsCarousel || !reviewsScrollbar || !reviewsThumb) {
+    console.error("No se encuentran elementos del carrusel de reviews");
+    return false;
+  }
 
-    if (!carousel || !scrollbar || !thumb) {
-        console.error("No se encuentran elementos del carrusel");
-        return false;
-    }
-
-    setupEvents();
-    recalcThumb();
-    return true;
+  setupReviewsEvents();
+  recalcReviewsThumb();
+  return true;
 }
 
-function recalcThumb() {
-    if (!carousel || !scrollbar || !thumb) return;
+function recalcReviewsThumb() {
+  if (!reviewsCarousel || !reviewsScrollbar || !reviewsThumb) return;
 
-    const visibleWidth = carousel.clientWidth;
-    const totalWidth = carousel.scrollWidth;
-    
-    if (totalWidth <= visibleWidth) {
-        thumb.style.display = "none";
-        return;
-    }
-    
-    thumb.style.display = "block";
-    
-    const trackWidth = scrollbar.clientWidth;
-    const ratio = visibleWidth / totalWidth;
-    const thumbWidth = Math.max(40, trackWidth * ratio);
-    
-    thumb.style.width = thumbWidth + "px";
-    updateThumbPosition();
+  const visibleWidth = reviewsCarousel.clientWidth;
+  const totalWidth   = reviewsCarousel.scrollWidth;
+
+  if (totalWidth <= visibleWidth) {
+    reviewsThumb.style.display = "none";
+    return;
+  }
+
+  reviewsThumb.style.display = "block";
+
+  const trackWidth = reviewsScrollbar.clientWidth;
+  const ratio      = visibleWidth / totalWidth;
+  const thumbWidth = Math.max(40, trackWidth * ratio);
+
+  reviewsThumb.style.width = thumbWidth + "px";
+  updateReviewsThumbPosition();
 }
 
-function updateThumbPosition() {
-    if (!carousel || !scrollbar || !thumb) return;
-    
-    const trackWidth = scrollbar.clientWidth;
-    const thumbWidth = thumb.clientWidth;
-    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-    
-    if (maxScroll <= 0) {
-        thumb.style.transform = "translateX(0px)";
-        return;
-    }
-    
-    const maxThumbTravel = trackWidth - thumbWidth;
-    const scrollRatio = carousel.scrollLeft / maxScroll;
-    const thumbX = maxThumbTravel * scrollRatio;
-    
-    thumb.style.transform = `translateX(${thumbX}px)`;
+function updateReviewsThumbPosition() {
+  if (!reviewsCarousel || !reviewsScrollbar || !reviewsThumb) return;
+
+  const trackWidth   = reviewsScrollbar.clientWidth;
+  const thumbWidth   = reviewsThumb.clientWidth;
+  const maxScroll    = reviewsCarousel.scrollWidth - reviewsCarousel.clientWidth;
+
+  if (maxScroll <= 0) {
+    reviewsThumb.style.transform = "translateX(0px)";
+    return;
+  }
+
+  const maxThumbTravel = trackWidth - thumbWidth;
+  const scrollRatio    = reviewsCarousel.scrollLeft / maxScroll;
+  const thumbX         = maxThumbTravel * scrollRatio;
+
+  reviewsThumb.style.transform = `translateX(${thumbX}px)`;
 }
 
-function setupEvents() {
-    // Scroll del carrusel → mueve thumb
-    carousel.addEventListener("scroll", updateThumbPosition);
+function setupReviewsEvents() {
+  reviewsCarousel.addEventListener("scroll", updateReviewsThumbPosition);
 
-    // Drag del thumb
-    thumb.addEventListener("mousedown", startDrag);
-    
-    document.addEventListener("mousemove", doDrag);
-    document.addEventListener("mouseup", endDrag);
+  reviewsThumb.addEventListener("mousedown", startReviewsDrag);
+  document.addEventListener("mousemove", doReviewsDrag);
+  document.addEventListener("mouseup", endReviewsDrag);
 
-    // Click en barra
-    scrollbar.addEventListener("click", handleTrackClick);
+  reviewsScrollbar.addEventListener("click", handleReviewsTrackClick);
 
-    // Resize ventana
-    window.addEventListener("resize", recalcThumb);
+  window.addEventListener("resize", recalcReviewsThumb);
 }
 
-function startDrag(e) {
-    isDragging = true;
-    startX = e.clientX;
-    startScrollLeft = carousel.scrollLeft;
-    document.body.style.userSelect = "none";
-    e.preventDefault();
+function startReviewsDrag(e) {
+  if (!reviewsCarousel || !reviewsThumb) return;
+
+  isReviewsDragging   = true;
+  reviewsStartX       = e.clientX;
+  reviewsStartScrollLeft = reviewsCarousel.scrollLeft;
+  document.body.style.userSelect = "none";
+  e.preventDefault();
 }
 
-function doDrag(e) {
-    if (!isDragging) return;
-    
-    const trackWidth = scrollbar.clientWidth;
-    const thumbWidth = thumb.clientWidth;
-    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-    const maxThumbTravel = trackWidth - thumbWidth;
-    
-    if (maxThumbTravel <= 0) return;
-    
-    const deltaX = e.clientX - startX;
-    const scrollRatio = maxScroll / maxThumbTravel;
-    carousel.scrollLeft = startScrollLeft + deltaX * scrollRatio;
+function doReviewsDrag(e) {
+  if (!isReviewsDragging || !reviewsCarousel || !reviewsScrollbar || !reviewsThumb) return;
+
+  const trackWidth     = reviewsScrollbar.clientWidth;
+  const thumbWidth     = reviewsThumb.clientWidth;
+  const maxScroll      = reviewsCarousel.scrollWidth - reviewsCarousel.clientWidth;
+  const maxThumbTravel = trackWidth - thumbWidth;
+
+  if (maxThumbTravel <= 0) return;
+
+  const deltaX      = e.clientX - reviewsStartX;
+  const scrollRatio = maxScroll / maxThumbTravel;
+  reviewsCarousel.scrollLeft = reviewsStartScrollLeft + deltaX * scrollRatio;
 }
 
-function endDrag() {
-    isDragging = false;
-    document.body.style.userSelect = "";
+function endReviewsDrag() {
+  isReviewsDragging = false;
+  document.body.style.userSelect = "";
 }
 
-function handleTrackClick(e) {
-    if (e.target === thumb) return;
-    
-    const rect = scrollbar.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const trackWidth = scrollbar.clientWidth;
-    const thumbWidth = thumb.clientWidth;
-    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-    const maxThumbTravel = trackWidth - thumbWidth;
-    
-    if (maxThumbTravel <= 0) return;
-    
-    const thumbCenter = Math.min(Math.max(clickX - thumbWidth / 2, 0), maxThumbTravel);
-    const scrollRatio = maxScroll / maxThumbTravel;
-    carousel.scrollLeft = thumbCenter * scrollRatio;
-}
+function handleReviewsTrackClick(e) {
+  if (e.target === reviewsThumb || !reviewsCarousel || !reviewsScrollbar || !reviewsThumb) return;
 
-// Exponer funciones para loadReviews
-window.recalcThumb = recalcThumb;
+  const rect       = reviewsScrollbar.getBoundingClientRect();
+  const clickX     = e.clientX - rect.left;
+  const trackWidth = reviewsScrollbar.clientWidth;
+  const thumbWidth = reviewsThumb.clientWidth;
+  const maxScroll  = reviewsCarousel.scrollWidth - reviewsCarousel.clientWidth;
+  const maxThumbTravel = trackWidth - thumbWidth;
+
+  if (maxThumbTravel <= 0) return;
+
+  const thumbCenter = Math.min(Math.max(clickX - thumbWidth / 2, 0), maxThumbTravel);
+  const scrollRatio = maxScroll / maxThumbTravel;
+  reviewsCarousel.scrollLeft = thumbCenter * scrollRatio;
+}
 
 // ================================
-// INICIALIZAR TODO
+// SLIDERS PRINCIPALES (MULTIINSTANCIA)
 // ================================
-document.addEventListener("DOMContentLoaded", function() {
-    loadReviews();
-    initScrollbar();
-});
+function initAllMainSliders() {
+  const wrappers = document.querySelectorAll('.js-slider');
+  wrappers.forEach(initSliderInstance);
+}
 
-document.addEventListener("DOMContentLoaded", function () {
+function initSliderInstance(wrapper) {
+  const track     = wrapper.querySelector('.js-track');
+  const scrollbar = wrapper.querySelector('.js-scrollbar');
+  const thumb     = wrapper.querySelector('.js-thumb');
+  const prevBtn   = wrapper.querySelector('.js-prev');
+  const nextBtn   = wrapper.querySelector('.js-next');
+  const cards     = Array.from(track.querySelectorAll('.card, .card-restaurante'));
+
+  if (!track || !prevBtn || !nextBtn || !cards.length) return;
+
+  let currentIndex = 0;
+  let dragging     = false;
+  let startX, startLeft;
+
+  // -------- MÓVIL: 1 card + bucle infinito --------
+  function updateMobileSlide() {
+    if (isDesktop()) {
+      track.style.transform = 'translateX(0)';
+      return;
+    }
+    const offset = -currentIndex * 100;
+    track.style.transform = `translateX(${offset}%)`;
+  }
+
+  function goToSlide(i) {
+    const last = cards.length - 1;
+    if (i < 0) i = last;
+    else if (i > last) i = 0;
+    currentIndex = i;
+    updateMobileSlide();
+  }
+
+  prevBtn.addEventListener('click', () => {
+    if (!isDesktop()) goToSlide(currentIndex - 1);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (!isDesktop()) goToSlide(currentIndex + 1);
+  });
+
+  // -------- DESKTOP: barra scroll personalizada --------
+  function updateThumb() {
+    if (!isDesktop() || !scrollbar || !thumb) return;
+
+    const scrollWidth = track.scrollWidth;
+    const clientWidth = track.clientWidth;
+    const scrollLeft  = track.scrollLeft;
+
+    if (scrollWidth <= clientWidth) {
+      thumb.style.width = '100%';
+      thumb.style.left  = '0';
+      return;
+    }
+
+    const visibleRatio = clientWidth / scrollWidth;
+    const thumbWidth   = Math.max(visibleRatio * scrollbar.clientWidth, 40);
+    thumb.style.width = thumbWidth + 'px';
+
+    const maxThumbX   = scrollbar.clientWidth - thumbWidth;
+    const scrollRatio = scrollLeft / (scrollWidth - clientWidth);
+    thumb.style.left = maxThumbX * scrollRatio + 'px';
+  }
+
+  if (scrollbar && thumb) {
+    track.addEventListener('scroll', updateThumb);
+
+    thumb.addEventListener('mousedown', (e) => {
+      if (!isDesktop()) return;
+      dragging = true;
+      startX   = e.clientX;
+      startLeft = parseFloat(getComputedStyle(thumb).left) || 0;
+      document.body.style.userSelect = 'none';
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDesktop() || !dragging) return;
+
+      const delta   = e.clientX - startX;
+      const barW    = scrollbar.clientWidth;
+      const thumbW  = thumb.clientWidth;
+      const maxX    = barW - thumbW;
+
+      let newLeft = startLeft + delta;
+      newLeft = Math.max(0, Math.min(maxX, newLeft));
+      thumb.style.left = newLeft + 'px';
+
+      const ratio     = newLeft / maxX;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      track.scrollLeft = maxScroll * ratio;
+    });
+
+    window.addEventListener('mouseup', () => {
+      dragging = false;
+      document.body.style.userSelect = '';
+    });
+  }
+
+  window.addEventListener('resize', () => {
+    updateMobileSlide();
+    updateThumb();
+  });
+
+  updateMobileSlide();
+  updateThumb();
+}
+
+// ================================
+// SLIDER GALERÍA MÓVIL (AUTOPLAY)
+// ================================
+function initGaleriaSlider() {
   const slider = document.querySelector(".galeria-slider-mobile");
   if (!slider) return;
 
@@ -180,10 +303,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let current = 0;
   const total = slides.length;
-  const intervalo = 4000; // 4s
+  const intervalo = 4000;
 
   function showSlide(index) {
-    // normalizamos el índice por si acaso
     if (index < 0) index = total - 1;
     if (index >= total) index = 0;
     current = index;
@@ -197,56 +319,105 @@ document.addEventListener("DOMContentLoaded", function () {
     showSlide(current + 1);
   }
 
-  // Iniciar siempre con la primera visible
   showSlide(0);
-
-  // Auto-play
   setInterval(nextSlide, intervalo);
-});
+}
 
+// ================================
+// VIDEO MODAL
+// ================================
+function initVideoModal() {
+  const trigger = document.querySelector('.video-trigger');
+  const modal   = document.getElementById('videoModal');
+  const closeBtn = document.querySelector('.video-close');
+  const video    = document.getElementById('videoPopup');
 
-const trigger = document.querySelector('.video-trigger');
-const modal = document.getElementById('videoModal');
-const closeBtn = document.querySelector('.video-close');
-const video = document.getElementById('videoPopup');
+  if (!trigger || !modal || !closeBtn || !video) return;
 
-trigger.addEventListener('click', () => {
-  modal.style.display = 'flex';   // muestra el modal
-  video.currentTime = 0;          // empieza desde el inicio (opcional)
-  video.play();                   // reproduce al abrir
-});
+  trigger.addEventListener('click', () => {
+    modal.style.display = 'flex';
+    video.currentTime = 0;
+    video.play();
+  });
 
-closeBtn.addEventListener('click', () => {
-  video.pause();                  // pausa al cerrar
-  modal.style.display = 'none';
-});
-
-modal.addEventListener('click', (e) => {
-  // cerrar si se hace clic fuera del contenido
-  if (e.target === modal) {
+  closeBtn.addEventListener('click', () => {
     video.pause();
     modal.style.display = 'none';
-  }
-});
+  });
 
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      video.pause();
+      modal.style.display = 'none';
+    }
+  });
+}
 
-
-
-function openModal() {
-      document.getElementById('modalOverlay').classList.add('active');
+// ================================
+// MODAL OVERLAY
+// ================================
+function initModalOverlay() {
+  function openModal() {
+    const modalOverlay = document.getElementById('modalOverlay');
+    if (modalOverlay) {
+      modalOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
+  }
 
-    function closeModal(event) {
-      if (!event || event.target === event.currentTarget) {
-        document.getElementById('modalOverlay').classList.remove('active');
-        document.body.style.overflow = '';
+  function closeModal(event) {
+    const modalOverlay = document.getElementById('modalOverlay');
+    if (!event || event.target === event.currentTarget) {
+      if (modalOverlay) {
+        modalOverlay.classList.remove('active');
       }
+      document.body.style.overflow = '';
     }
+  }
 
-    // Close on Escape key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeModal();
-      }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  });
+
+  window.openModal  = openModal;
+  window.closeModal = closeModal;
+}
+
+// ================================
+// MENÚ HAMBURGUESA
+// ================================
+function initHamburgerMenu() {
+  const hamburger = document.getElementById('hamburger');
+  const menu      = document.getElementById('menu');
+  const closeBtn1 = document.querySelector('.menu-close');
+
+  if (hamburger && menu) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      menu.classList.toggle('active');
     });
+  }
+
+  if (closeBtn1 && hamburger && menu) {
+    closeBtn1.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      menu.classList.remove('active');
+    });
+  }
+}
+
+// ================================
+// INICIALIZAR TODO
+// ================================
+document.addEventListener("DOMContentLoaded", function() {
+  loadReviews();
+  initReviewsScrollbar();
+
+  initAllMainSliders();  
+  initGaleriaSlider();
+  initVideoModal();
+  initModalOverlay();
+  initHamburgerMenu();
+});

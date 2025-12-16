@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .site-footer {
+  background: #0f1b1b;
+  color: #e5eceb;
+  padding: 3rem 1.5rem 2rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.4fr;
+  gap: 2rem;
+}
+
+.footer-logo {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #c4d0cf;
+  margin-bottom: 0.8rem;
+}
+
+.footer-text.small {
+  font-size: 0.8rem;
+}
+
+.footer-col {
+  font-size: 0.9rem;
+}
+
+.footer-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #a5b5b4;
+  margin-bottom: 0.7rem;
+}
+
+.footer-list,
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-list li,
+.footer-links li {
+  margin-bottom: 0.45rem;
+}
+
+.footer-links a,
+.footer-list a {
+  color: #e5eceb;
+  text-decoration: none;
+  opacity: 0.9;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.footer-links a:hover,
+.footer-list a:hover {
+  opacity: 1;
+  color: #f2f8f7;
+}
+
+/* Parte inferior */
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(197, 215, 214, 0.25);
+  padding-top: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: #9fb0af;
+}
+
+.footer-bottom-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-bottom-links a {
+  color: #c4d0cf;
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.footer-bottom-links a:hover {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer {
+    padding: 2.5rem 1.25rem 1.75rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <!-- Columna 1: Marca + contacto -->
+    <div class="footer-col">
+      <h3 class="footer-logo">Casa Bakio</h3>
+      <p class="footer-text">
+        Apartamento turístico frente al mar para disfrutar de Bakio con calma y sabor.
+      </p>
+      <ul class="footer-list">
+        <li>Email: <a href="mailto:info@casabakio.com">info@casabakio.com</a></li>
+        <li>Teléfono: <a href="tel:+34600111222">+34 600 111 222</a></li>
+        <li>Dirección: Calle del Mar 12, 48130 Bakio, España</li>
+      </ul>
+    </div>
+
+    <!-- Columna 2: Reservas -->
+    <div class="footer-col">
+      <h4 class="footer-title">Reservas</h4>
+      <ul class="footer-links">
+        <li><a href="#">Condiciones de reserva</a></li>
+        <li><a href="#">Política de cancelación</a></li>
+        <li><a href="#">Depósito y fianza</a></li>
+        <li><a href="#">Preguntas frecuentes</a></li>
+      </ul>
+    </div>
+
+    <!-- Columna 3: Información legal -->
+    <div class="footer-col">
+      <h4 class="footer-title">Información legal</h4>
+      <ul class="footer-links">
+        <li>Nº de registro turístico: EBI-1234</li>
+        <li><a href="#">Aviso legal</a></li>
+        <li><a href="#">Política de privacidad</a></li>
+        <li><a href="#">Política de cookies</a></li>
+      </ul>
+    </div>
+
+    <!-- Columna 4: RGPD / datos -->
+    <div class="footer-col">
+      <h4 class="footer-title">Datos y protección</h4>
+      <p class="footer-text small">
+        Responsable: Casa Bakio S.L.  
+        Finalidad: gestión de reservas y atención al cliente.  
+        Derechos: acceso, rectificación y supresión de los datos, entre otros, escribiendo a
+        <a href="mailto:privacidad@casabakio.com">privacidad@casabakio.com</a>.
+      </p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Casa Bakio. Todos los derechos reservados.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Términos y condiciones</a>
+      <span>·</span>
+      <a href="#">Configuración de cookies</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

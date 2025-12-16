@@ -13,17 +13,31 @@
 
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="recomendados.html">Recomendados</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
+    <header class="header">
+        <div class="menu-wrapper">
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <a href="contacto.html#calendario" class="btn-reservar">RESERVAR</a>
+        </div>
     </header>
+
+    <!-- Menú desplegable -->
+    <div class="menu-overlay" id="menu">
+        <button class="menu-close" aria-label="Cerrar menú">&times;</button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="alojamiento.html">Alojamiento</a></li>
+                    <li><a href="recomendados.html">Recomendaciones</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+    </div>
 <main>
-    <section>
+    <section class="mb150">
         <article class="fRaya">
             <div class="card w80">
                 <p class="mb20">El Balcón de Bakio</p>
@@ -31,15 +45,210 @@
                 <p class="mb20"> En Bakio y sus alrededores podrás saborear lo mejor de la cocina vasca: desde el pescado fresco del Cantábrico hasta los pintxos más
                 tradicionales y la txakolina local. Una experiencia que combina mar,
                 tierra y tradición en cada bocado.</p>
-                <a class="btnA" href="contacto.html">Ver disponibilidad</a>
+                <a class="btnA" href="contacto.html#calendario">Ver disponibilidad</a>
             </div>
         </article>  
     </section>
+ <!-- SLIDER 1 -->
+    <section class="section">
+      <div class="section-inner mb100 p10-m">
+        <!-- IZQUIERDA: TEXTO -->
+        <div class="section-text">
+          <h2>Desayunos con encanto.</h2>
+          <p>Nada mejor que comenzar el día con buena compañía y las vistas de Bakio al fondo.</p>
+        </div>
 
+        <!-- DERECHA: SLIDER -->
+        <div class="slider-wrapper js-slider">
+          <!-- Flechas solo visibles en móvil -->
+          <button class="arrow arrow--prev js-prev">&#10094;</button>
+          <button class="arrow arrow--next js-next">&#10095;</button>
+
+          <div class="slider-viewport">
+            <div class="slider js-track">
+              <article class="card-restaurante">
+                <img src="assets/recomendado/inicio/cafe.jpg" alt="Cafetería Doniene">
+                <div class="card-body">
+                  <h3 class="card-title mb10 p10">Cafetería Doniene</h3>
+                </div>
+              </article>
+
+              <article class="card-restaurante">
+                <img src="assets/recomendado/inicio/itxas.jpg" alt="Bar Itxas Ondo">
+                <div class="card-body">
+                  <h3 class="card-title mb10 p10">Bar Itxas Ondo</h3>
+                </div>
+              </article>
+
+              <article class="card-restaurante">
+                <img src="assets/recomendado/inicio/ur.jpg" alt="Bar UrZabal">
+                <div class="card-body">
+                  <h3 class="card-title mb10 p10">Bar UrZabal</h3>
+                </div>
+              </article>
+
+              <!-- INSERTAR MÁS CARD -->
+            </div> <!-- /.slider js-track -->
+          </div> <!-- /.slider-viewport -->
+
+          <!-- BARRA DE SCROLL (solo desktop) -->
+          <div class="slider-scrollbar js-scrollbar">
+            <div class="slider-scrollbar-thumb js-thumb"></div>
+          </div>
+        </div> <!-- /.slider-wrapper -->
+      </div> <!-- /.section-inner -->
+    </section>
+
+    <!-- SLIDER 2 -->
+    <section class="section">
+      <div class="section-inner mb100 p10-m">
+        <div class="section-text">
+          <h2>Sabor y calma al atardecer.</h2>
+          <p>Comparte una buena mesa, la brisa del mar y el encanto de Bakio iluminado.</p>
+        </div>
+
+        <!-- DERECHA: SLIDER -->
+        <div class="slider-wrapper js-slider">
+          <!-- Flechas solo visibles en móvil -->
+          <button class="arrow arrow--prev js-prev">&#10094;</button>
+          <button class="arrow arrow--next js-next">&#10095;</button>
+
+          <div class="slider-viewport">
+            <div class="slider js-track">
+              <article class="card-restaurante">
+                <img src="assets/recomendado/inicio/gotxzon.jpg" alt="Gotzon Jatetxea">
+                <div class="card-body">
+                  <h3 class="card-title mb10 p10">Gotzon Jatetxea</h3>
+                </div>
+              </article>
+
+              <article class="card-restaurante">
+                <img src="assets/recomendado/inicio/fuego.jpg" alt="Fuego Argentino">
+                <div class="card-body">
+                  <h3 class="card-title mb10 p10">Fuego Argentino</h3>
+                </div>
+              </article>
+
+              <article class="card-restaurante">
+                <img src="assets/recomendado/inicio/Eneperi.jpg" alt="Eneperi - exterior">
+                <div class="card-body">
+                  <h3 class="card-title mb10 p10">Eneperi</h3>
+                </div>
+              </article>
+
+              <article class="card-restaurante">
+                <img src="assets/recomendado/inicio/pizza.jpg" alt="La Cantine">
+                <div class="card-body">
+                  <h3 class="card-title mb10 p10">La Cantine</h3>
+                </div>
+              </article>
+            </div> <!-- /.slider js-track -->
+          </div> <!-- /.slider-viewport -->
+
+          <!-- BARRA DE SCROLL (solo desktop) -->
+          <div class="slider-scrollbar js-scrollbar">
+            <div class="slider-scrollbar-thumb js-thumb"></div>
+          </div>
+        </div> <!-- /.slider-wrapper -->
+      </div> <!-- /.section-inner -->
+    </section>
+
+    <section class="hero-recomendados mb150">
+        <div class="w80 centrar mb100">
+            <h2 class="mb50">Descubre, disfruta <br>y vive Bakio a tu manera</h2>
+            <p>Tanto si vienes en familia, con amigos o en pareja, aquí encontrarás planes para todos los gustos. <br> Desde aventuras en la naturaleza hasta rincones llenos de historia, <br> te esperamos con experiencias únicas a un paso de El Balcón de Bakio.</p>
+        </div>
+        <article>
+            <a href="joven.html" class="hero-item">
+                <div class="hero-media hero-media--1"></div>
+                <div class="hero-content">
+                <h3>Experiencias con energía</h3>
+                <span class="hero-icon">+</span>
+                </div>
+            </a>
+        </article>
+        <article>
+            <a href="familia.html" class="hero-item">
+                <div class="hero-media hero-media--2"></div>
+                <div class="hero-content">
+                <h3>Aventura en familia</h3>
+                <span class="hero-icon">+</span>
+                </div>
+            </a>
+        </article>
+        <article>
+            <a href="rincon.html" class="hero-item">
+            <div class="hero-media hero-media--3"></div>
+            <div class="hero-content">
+            <h3>Rincones para descubrir</h3>
+            <span class="hero-icon">+</span>
+            </div>
+            </a>
+        </article>
+
+    </section>
 
 
 </main>
-    <footer></footer>
+
+<footer class="footer-bakio">
+
+    <!-- Detalle marca: rayas -->
+    <div class="footer-rayas"></div>
+
+    <div class="footer-inner">
+
+        <!-- Marca -->
+        <div class="footer-brand">
+            <h4>El Balcón de Bakio</h4>
+            <p>
+                Un alojamiento pensado para disfrutar del mar, la calma
+                y los pequeños momentos en familia, en Bakio y sus alrededores.
+            </p>
+        </div>
+
+        <!-- CTA -->
+        <div class="footer-cta">
+            <p class="white">¿Listos para vuestra próxima escapada?</p>
+            <a href="contacto.html" class="btn-footer">
+                Consulta disponibilidad →
+            </a>
+            <details class="footer-legal">
+            <summary>Información legal</summary>
+            <p>
+                Vivienda turística registrada · Nº EBI02913<br>
+                Registro único: ESFCTU00004801000062730500000000000000000000EBI029137
+            </p>
+            </details>
+        </div>
+
+        <!-- Navegación -->
+        <nav class="footer-links">
+            <a href="alojamiento.html">El Alojamiento</a>
+            <a href="recomendados.html">Recomendaciones</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+
+        <!-- Contacto -->
+        <div class="footer-contact">
+            <p class="white">📍 Bakio · Bizkaia</p>
+            <p class="white">🏖 A 300 m de la playa</p>
+            <p class="white">✉️ kepa.alana@gmail.com</p>
+        
+
+       </div>
+
+    </div>
+
+    <!-- Línea final -->
+    <div class="footer-bottom">
+        <p>© 2025 El Balcón de Bakio · Todos los derechos reservados</p>
+        
+    </div>
+
+</footer>
+
+
     <script src="js/main.js"></script>
 </body>
 </html>

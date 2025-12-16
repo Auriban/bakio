@@ -13,15 +13,29 @@
 
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="recomendados.html">Recomendados</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
+    <header class="header">
+        <div class="menu-wrapper">
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <a href="contacto.html#calendario" class="btn-reservar">RESERVAR</a>
+        </div>
     </header>
+
+    <!-- Menú desplegable -->
+    <div class="menu-overlay" id="menu">
+        <button class="menu-close" aria-label="Cerrar menú">&times;</button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="alojamiento.html">Alojamiento</a></li>
+                    <li><a href="recomendados.html">Recomendaciones</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+    </div>
     <main>
         <section class="fportada1">
             <div class="fportada-content">
@@ -192,7 +206,259 @@
                 durante vuestra estancia.
                 </p>
 
-                <a href="servicios.html" class=" btnA ">Ver Servicios &raquo;</a>
+                 <button class="btn-open" onclick="openModal()">
+                        <i class="fa-solid fa-list-check"></i>
+                        Ver Servicios
+                </button>
+                <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+                    <div class="modal" onclick="event.stopPropagation()">
+                    <div class="modal-header">
+                        <div class="drag-indicator"></div>
+                        <h2>¿Qué hay en este alojamiento?</h2>
+                        <button class="btn-close" onclick="closeModal()">
+                        <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                    <div class="modal-content">
+                        
+                        <!-- Vistas panorámicas -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-mountain-sun"></i></div>
+                            <h3>Vistas panorámicas</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-water"></i><span class="item-text">Vistas a la bahía</span></div>
+                            <div class="item"><i class="fa-solid fa-umbrella-beach"></i><span class="item-text">Vistas a la playa</span></div>
+                            <div class="item"><i class="fa-solid fa-ship"></i><span class="item-text">Vistas al mar</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Baño -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-bath"></i></div>
+                            <h3>Baño</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-bath"></i><span class="item-text">Bañera</span></div>
+                            <div class="item"><i class="fa-solid fa-wind"></i><span class="item-text">Secador de pelo</span></div>
+                            <div class="item"><i class="fa-solid fa-spray-can-sparkles"></i><span class="item-text">Productos de limpieza</span></div>
+                            <div class="item"><i class="fa-solid fa-pump-soap"></i><span class="item-text">Champú</span></div>
+                            <div class="item"><i class="fa-solid fa-bottle-droplet"></i><span class="item-text">Acondicionador</span></div>
+                            <div class="item"><i class="fa-solid fa-soap"></i><span class="item-text">Gel de ducha</span></div>
+                            <div class="item"><i class="fa-solid fa-toilet"></i><span class="item-text">Bidé</span></div>
+                            <div class="item"><i class="fa-solid fa-shower"></i><span class="item-text">Ducha exterior</span></div>
+                            <div class="item"><i class="fa-solid fa-temperature-high"></i><span class="item-text">Agua caliente</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Dormitorio y lavandería -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-bed"></i></div>
+                            <h3>Dormitorio y lavandería</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-shirt"></i><span class="item-text">Lavadora</span></div>
+                            <div class="item"><i class="fa-solid fa-vest-patches"></i><span class="item-text">Perchas</span></div>
+                            <div class="item"><i class="fa-solid fa-bed"></i><span class="item-text">Ropa de cama</span></div>
+                            <div class="item"><i class="fa-solid fa-blinds"></i><span class="item-text">Persianas o cortinas opacas</span></div>
+                            <div class="item"><i class="fa-solid fa-shirt"></i><span class="item-text">Plancha</span></div>
+                            <div class="item"><i class="fa-solid fa-t-shirt"></i><span class="item-text">Tendedero para ropa</span></div>
+                            <div class="item"><i class="fa-solid fa-box-archive"></i><span class="item-text">Espacio para guardar la ropa</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Entretenimiento -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-tv"></i></div>
+                            <h3>Entretenimiento</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-tv"></i><span class="item-text">TV</span></div>
+                            <div class="item"><i class="fa-solid fa-gamepad"></i><span class="item-text">Juegos recreativos</span></div>
+                            <div class="item"><i class="fa-solid fa-book"></i><span class="item-text">Libros y material de lectura</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Para familias -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-baby"></i></div>
+                            <h3>Para familias</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item">
+                            <i class="fa-solid fa-baby-carriage"></i>
+                            <div><span class="item-text">Parque/cunas de viaje</span><div class="item-desc">Disponible previa solicitud</div></div>
+                            </div>
+                            <div class="item"><i class="fa-solid fa-blinds"></i><span class="item-text">Persianas o cortinas opacas</span></div>
+                            <div class="item"><i class="fa-solid fa-child"></i><span class="item-text">Libros y juguetes para niños</span></div>
+                            <div class="item"><i class="fa-solid fa-utensils"></i><span class="item-text">Platos y cubiertos para niños</span></div>
+                            <div class="item"><i class="fa-solid fa-plug"></i><span class="item-text">Protectores de enchufes</span></div>
+                            <div class="item"><i class="fa-solid fa-chess-board"></i><span class="item-text">Juegos de mesa</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Calefacción y refrigeración -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-temperature-half"></i></div>
+                            <h3>Calefacción y refrigeración</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-fan"></i><span class="item-text">Ventiladores portátiles</span></div>
+                            <div class="item"><i class="fa-solid fa-fire"></i><span class="item-text">Calefacción</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Seguridad en el hogar -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                            <h3>Seguridad en el hogar</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-bell"></i><span class="item-text">Detector de humo</span></div>
+                            <div class="item"><i class="fa-solid fa-circle-exclamation"></i><span class="item-text">Detector de monóxido de carbono</span></div>
+                            <div class="item"><i class="fa-solid fa-kit-medical"></i><span class="item-text">Botiquín</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Internet y oficina -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-wifi"></i></div>
+                            <h3>Internet y oficina</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-wifi"></i><span class="item-text">Wifi</span></div>
+                            <div class="item"><i class="fa-solid fa-laptop"></i><span class="item-text">Zona para trabajar</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Cocina y comedor -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-utensils"></i></div>
+                            <h3>Cocina y comedor</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-kitchen-set"></i><span class="item-text">Cocina</span></div>
+                            <div class="item"><i class="fa-solid fa-fire-burner"></i><span class="item-text">Zona donde los viajeros pueden cocinar</span></div>
+                            <div class="item"><i class="fa-solid fa-box"></i><span class="item-text">Frigorífico</span></div>
+                            <div class="item"><i class="fa-solid fa-clock-rotate-left"></i><span class="item-text">Microondas</span></div>
+                            <div class="item">
+                            <i class="fa-solid fa-spoon"></i>
+                            <div><span class="item-text">Utensilios básicos de cocina</span><div class="item-desc">Cazuelas y sartenes, aceite, sal y pimienta</div></div>
+                            </div>
+                            <div class="item">
+                            <i class="fa-solid fa-plate-wheat"></i>
+                            <div><span class="item-text">Platos y cubiertos</span><div class="item-desc">Cuencos, palillos, platos, tazas, etc.</div></div>
+                            </div>
+                            <div class="item"><i class="fa-solid fa-snowflake"></i><span class="item-text">Congelador</span></div>
+                            <div class="item"><i class="fa-solid fa-faucet-drip"></i><span class="item-text">Lavavajillas</span></div>
+                            <div class="item"><i class="fa-solid fa-fire-flame-simple"></i><span class="item-text">Fogón</span></div>
+                            <div class="item"><i class="fa-solid fa-square"></i><span class="item-text">Horno</span></div>
+                            <div class="item"><i class="fa-solid fa-mug-hot"></i><span class="item-text">Hervidor de agua</span></div>
+                            <div class="item"><i class="fa-solid fa-mug-saucer"></i><span class="item-text">Cafetera</span></div>
+                            <div class="item"><i class="fa-solid fa-wine-glass"></i><span class="item-text">Copas de vino</span></div>
+                            <div class="item"><i class="fa-solid fa-bread-slice"></i><span class="item-text">Tostadora</span></div>
+                            <div class="item"><i class="fa-solid fa-blender"></i><span class="item-text">Batidora</span></div>
+                            <div class="item"><i class="fa-solid fa-chair"></i><span class="item-text">Mesa de comedor</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Características de la ubicación -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <h3>Características de la ubicación</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item">
+                            <i class="fa-solid fa-door-open"></i>
+                            <div><span class="item-text">Entrada independiente</span><div class="item-desc">Entrada por otra calle o edificio</div></div>
+                            </div>
+                            <div class="item"><i class="fa-solid fa-jug-detergent"></i><span class="item-text">Lavandería cercana</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Exterior -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-tree"></i></div>
+                            <h3>Exterior</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-building"></i><span class="item-text">Patio privado o balcón</span></div>
+                            <div class="item"><i class="fa-solid fa-couch"></i><span class="item-text">Mobiliario exterior</span></div>
+                            <div class="item"><i class="fa-solid fa-fire"></i><span class="item-text">Barbacoa</span></div>
+                            <div class="item">
+                            <i class="fa-solid fa-umbrella-beach"></i>
+                            <div><span class="item-text">Elementos básicos para la playa</span><div class="item-desc">Toallas de playa, sombrilla, esterilla, equipo de snorkel</div></div>
+                            </div>
+                            <div class="item"><i class="fa-solid fa-person-swimming"></i><span class="item-text">Tumbonas</span></div>
+                        </div>
+                        </div>
+
+                        <!-- Aparcamiento e instalaciones -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-square-parking"></i></div>
+                            <h3>Aparcamiento e instalaciones</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-car"></i><span class="item-text">Aparcamiento gratuito en las instalaciones</span></div>
+                            <div class="item">
+                            <i class="fa-solid fa-elevator"></i>
+                            <div><span class="item-text">Ascensor</span><div class="item-desc">El alojamiento o edificio dispone de un ascensor de al menos 132 cm de profundidad cuya puerta mide como mínimo 81 cm de ancho</div></div>
+                            </div>
+                        </div>
+                        </div>
+
+                        <!-- Servicios -->
+                        <div class="category">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-concierge-bell"></i></div>
+                            <h3>Servicios</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item">
+                            <i class="fa-solid fa-suitcase-rolling"></i>
+                            <div><span class="item-text">Se permite dejar el equipaje</span><div class="item-desc">Para los viajeros que lleguen temprano o que se marchen después de la hora estipulada</div></div>
+                            </div>
+                            <div class="item">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <div><span class="item-text">Disponible para estancias largas</span><div class="item-desc">Permite estancias de 28 días o más</div></div>
+                            </div>
+                            <div class="item">
+                            <i class="fa-solid fa-key"></i>
+                            <div><span class="item-text">Llegada autónoma</span><div class="item-desc">Caja de seguridad para llaves</div></div>
+                            </div>
+                            <div class="item"><i class="fa-solid fa-handshake"></i><span class="item-text">Recepción por parte del anfitrión</span></div>
+                        </div>
+                        </div>
+
+                        <!-- No incluidos -->
+                        <div class="category not-available">
+                        <div class="category-header">
+                            <div class="category-icon"><i class="fa-solid fa-circle-xmark"></i></div>
+                            <h3>No incluidos</h3>
+                        </div>
+                        <div class="items">
+                            <div class="item"><i class="fa-solid fa-video"></i><span class="item-text">Cámaras de seguridad en los exteriores de la propiedad</span></div>
+                            <div class="item"><i class="fa-solid fa-wind"></i><span class="item-text">Secadora</span></div>
+                            <div class="item"><i class="fa-solid fa-snowflake"></i><span class="item-text">Aire acondicionado</span></div>
+                            <div class="item"><i class="fa-solid fa-box-open"></i><span class="item-text">Servicios básicos</span></div>
+                        </div>
+                        </div>
+
+                    </div>
+                    </div>
+                </div>
             </div>
             
             <div class="servicio-img servicio-img--bottom mt-200 img-lg">

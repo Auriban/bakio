@@ -13,15 +13,29 @@
 
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="recomendados.html">Recomendados</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
+    <header class="header">
+        <div class="menu-wrapper">
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <a href="contacto.html#calendario" class="btn-reservar">RESERVAR</a>
+        </div>
     </header>
+
+    <!-- Menú desplegable -->
+    <div class="menu-overlay" id="menu">
+        <button class="menu-close" aria-label="Cerrar menú">&times;</button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="alojamiento.html">Alojamiento</a></li>
+                    <li><a href="recomendados.html">Recomendaciones</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+    </div>
 <main>
     <section class="mb150">
         <article class="fRaya">

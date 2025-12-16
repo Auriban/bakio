@@ -48,28 +48,281 @@ p{
     color: #48595A;
 }
 
-
-nav ul{
-    list-style: none; /* quitar los puntos */
-    display: flex;
-    justify-content: flex-end;
-    padding: 20px 0px;
-}
-
-nav ul a{
-    padding: 10px 20px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-
 a{
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-footer{
-    background-color: rgb(0, 0, 0);
-    padding: 30px;
+.footer-bakio {
+    background: #323852;
+    color: #EDE8E2;
+    position: relative;
+}
+
+/* Rayas de marca */
+.footer-rayas {
+    height: 40px;
+    background-image: url("../assets/inicio/rayas.png");
+    background-repeat: repeat;
+    background-size: auto;
+}
+
+/* Contenido */
+.footer-inner {
+    padding: 70px 24px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Marca */
+.footer-brand h4 {
+    font-family: "Playfair Display", serif;
+    font-size: 26px;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.footer-brand p {
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.85;
+    color: white;
+}
+
+/* CTA */
+.footer-cta p {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: #EDE8E2;
+}
+
+.btn-footer {
+    color: #EDE8E2;
+}
+
+/* Links */
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.footer-links a {
+    color: #EDE8E2;
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+}
+
+/* Contacto */
+.footer-contact p {
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+/* Legal */
+.footer-legal p {
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: 0.6;
+}
+
+/* Línea final */
+.footer-bottom {
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 13px;
+    opacity: 0.5;
+    color: white;
+}
+
+.footer-legal {
+  margin-top: 40px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+}
+
+.footer-legal summary {
+  cursor: pointer;
+  opacity: 0.8;
+  font-family: "Nunito", sans-serif;
+}
+
+.footer-legal p {
+  margin-top: 10px;
+  line-height: 1.4;
+  font-family: "Nunito", sans-serif;
+}
+
+.white{
+  color: white;
+}
+/* ===== Header ===== */
+    .header {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      
+    }
+
+    .menu-wrapper {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 999px;
+      padding: 10px 14px;
+      gap: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.15);
+    }
+
+    /* ===== Hamburguesa ===== */
+    .hamburger {
+      width: 28px;
+      height: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      height: 2px;
+      width: 100%;
+      background: #1c2b2b;
+      transition: .4s ease;
+    }
+
+    /* Animación X */
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* ===== Botón Reservar ===== */
+    .btn-reservar {
+      background: #8FAAAD;
+      color: white;
+      padding: 10px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 500;
+      font-family: 'Montserrat', Arial, sans-serif;
+      letter-spacing: .06em;
+    }
+
+    /* ===== Menú fullscreen ===== */
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background:black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .4s ease, visibility .4s ease;
+      z-index: 2000;
+    }
+
+    .menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+    }
+
+    .menu-overlay nav ul {
+      list-style: none;
+      text-align: center;
+    }
+
+    .menu-overlay nav ul li {
+      margin: 20px 0;
+    }
+
+    .menu-overlay nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      font-family: 'Montserrat', Arial, sans-serif;
+      transition: opacity .3s ease;
+    }
+
+    .menu-overlay nav ul li a:hover {
+      opacity: .6;
+        font-weight: 400;
+    }
+
+    .menu-close {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      font-size: 32px;
+      color: white;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 9999;
+    }
+
+  .menu-overlay {
+    position: fixed;
+    inset: 0;
+    /* Rayas sólidas azules/blancas de fondo */
+    background:
+      repeating-linear-gradient(
+        90deg,
+        #1e40af 0px,
+        #1e40af 15px,
+        #ffffff 15px,
+        #ffffff 30px
+      );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .4s ease, visibility .4s ease;
+    z-index: 2000;
+  }
+
+/* Overlay oscuro OPACO encima de las rayas */
+.menu-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.95); /* Azul muy oscuro, casi opaco */
+  z-index: 1;
+}
+
+/* El contenido del menú por encima */
+.menu-overlay nav {
+  position: relative;
+  z-index: 2;
+  /* Sombra extra para las letras */
+}
+
+.menu-overlay nav ul li a {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
 }
 
 
@@ -1221,7 +1474,6 @@ footer{
     }
 
 
-    
     /* Content */
     .modal-content {
       overflow-y: auto;
@@ -1388,7 +1640,6 @@ footer{
 }
 
 
-
 .estancia-section {
   width: 100%;
     background: linear-gradient(to bottom, #c8d4d0 70%, #e8e0da 70%);
@@ -1470,23 +1721,176 @@ footer{
   display: block;
 }
 
+    .section-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
 
+    .section-text p {
+      font-size: 0.95rem;
+      max-width: 23rem;
+      line-height: 1.5;
+    }
 
-.grid-anim-item {
-  opacity: 0;
-  transform: translateY(60px) scale(0.97);
-  transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: opacity, transform;
+   .slider-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
 }
 
-.grid-anim-item.visible {
-  opacity: 1;
-  transform: none;
+/* viewport móvil: solo una card visible */
+.slider-viewport {
+  width: 100%;
+  overflow: hidden;
 }
 
+/* el slider ahora es una fila que movemos con transform */
+.slider {
+  display: flex;
+  transition: transform 0.4s ease;
+  gap: 0; /* en móvil no usamos gap para que el 100% encaje exacto */
+}
 
+/* CARD MOBILE: 1 por vista */
+.card-restaurante {
+  flex: 0 0 100%;
+  max-width: 100%;
+  background: #ffffff;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  margin-bottom:  20px;
+}
 
+.card-restaurante img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
 
+/* Flechas móviles */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  border: none;
+  background: rgba(20, 60, 60, 0.85);
+  color: #fff;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.arrow--prev { left: 8px; }
+.arrow--next { right: 8px; }
+
+/* ocultamos barra personalizada en móvil */
+.slider-scrollbar {
+  display: none;
+}
+
+.section {
+  max-width: 1000px;
+  margin: 0 auto;
+
+}
+
+.p10-m{
+  padding: 10px;
+}
+
+.hero-recomendados {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;             /* ocupa toda la pantalla */
+  font-family: "Playfair Display", system-ui, serif;
+}
+
+.hero-item {
+  position: relative;
+  flex: 1 0 33.33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+/* capa de imagen + overlay */
+.hero-media {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  transform: scale(1.02);
+  transition: transform 0.6s ease, filter 0.6s ease, opacity 0.6s ease;
+  filter: grayscale(0.1) contrast(1.1);
+}
+
+/* aquí asignas tus imágenes */
+.hero-media--1 {
+  background-image: url("../assets/recomendado/inicio/recomendacion1.jpg");
+  
+}
+.hero-media--2 {
+  background-image: url("../assets/recomendado/inicio/recomendacion2.jpg");
+}
+.hero-media--3 {
+  background-image: url("../assets/recomendado/inicio/recomendacion3.jpg");
+}
+
+/* overlay de color suave */
+.hero-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 28, 39, 0.35);
+  transition: background 0.4s ease;
+}
+
+/* contenido centrado */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 1.5rem;
+  width: 100%;
+}
+
+.hero-content h3 {
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  color: white;
+}
+
+/* icono minimalista */
+.hero-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
 
 /*......................ESTILOS DE GRID.............................*/ 
 
@@ -1778,37 +2182,37 @@ footer{
 
 .gallery {
         padding: 4rem 2.5rem;
-    }
+  }
 
-    .gallery__header {
-        margin-bottom: 3.5rem;
-    }
+  .gallery__header {
+      margin-bottom: 3.5rem;
+  }
 
-    .gallery__title {
-        font-size: 2.8rem;
-    }
+  .gallery__title {
+      font-size: 2.8rem;
+  }
 
-    .gallery__subtitle {
-        font-size: 0.9rem;
-    }
+  .gallery__subtitle {
+      font-size: 0.9rem;
+  }
 
-    .gallery__grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.25rem;
-    }
+  .gallery__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+  }
 
-    .gallery__img {
-        height: 300px;
-    }
+  .gallery__img {
+      height: 300px;
+  }
 
-    /* Variations for visual interest */
-    .gallery__item--large {
-        grid-column: span 2;
-    }
+  /* Variations for visual interest */
+  .gallery__item--large {
+      grid-column: span 2;
+  }
 
-    .gallery__item--large .gallery__img {
-        height: 380px;
-    }
+  .gallery__item--large .gallery__img {
+      height: 380px;
+  }
 
 
 .modulo-intro {
@@ -1888,6 +2292,105 @@ footer{
       transform: translateY(0);
       opacity: 1;
     }
+
+    .section{
+       max-width: 680px;
+    }
+
+
+    .section-inner {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+
+  .section-text {
+    flex: 0 0 35%;
+  }
+
+  .slider-wrapper {
+    flex: 0 0 65%;
+  }
+
+  /* en desktop/tablet volvemos al scroll horizontal clásico */
+  .slider-viewport {
+    overflow: visible;
+  }
+
+  .slider {
+    gap: 1rem;
+    transform: translateX(0); /* lo reseteamos */
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  }
+
+  .slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card-restaurante {
+    flex: 0 0 calc((100% - 2rem) / 3); /* 3 cards visibles */
+    max-width: none;
+  }
+
+  /* flechas se ocultan en tablet/desktop */
+  .arrow {
+    display: none;
+  }
+
+  /* barra scroll visible en tablet/desktop */
+  .slider-scrollbar {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 4px;
+    background: #dfe5e4;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .slider-scrollbar-thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 25%;
+    background: #143c3c;
+    border-radius: 999px;
+    cursor: grab;
+  }
+
+   .hero-item:hover .hero-media {
+    transform: scale(1.08);
+    filter: grayscale(0) contrast(1.15);
+  }
+
+  .hero-item:hover::before {
+    background: rgba(8, 28, 39, 0.6);
+  }
+
+  .hero-item:hover .hero-icon {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #ffffff;
+    transform: translateY(2px);
+  }
+
+  .hero-item:hover h2 {
+    text-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  }
+
+
+  .hero-recomendados {
+    flex-direction: column;
+  }
+
+  .hero-item {
+    min-height: 33.33vh;    /* 3 franjas que ocupan toda la vista */
+  }
+
+  .hero-content h2 {
+    font-size: 2rem;
+  }
 
 
 }
@@ -2329,6 +2832,104 @@ footer{
       color: #323852;
       margin-top: 0.125rem;
     }
+
+    .section{
+       width: 90%;
+       max-width: 100%;
+    }
+    
+
+      .section-inner {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 3rem;
+      }
+
+      .section-text {
+        flex: 0 0 35%;
+      }
+
+  .section-inner {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+
+  .section-text { flex: 0 0 35%; }
+  .slider-wrapper { flex: 0 0 65%; }
+
+  /* en desktop volvemos al scroll horizontal clásico */
+  .slider-viewport {
+    overflow: visible;
+  }
+
+  .slider {
+    gap: 1rem;
+    transform: translateX(0); /* lo reseteamos */
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  }
+
+  .slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card-restaurante {
+    flex: 0 0 calc((100% - 2rem) / 3); /* 3 cards visibles */
+    max-width: none;
+  }
+
+  /* flechas se ocultan en desktop */
+  .arrow {
+    display: none;
+  }
+
+  /* barra scroll visible en desktop */
+  .slider-scrollbar {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 4px;
+    background: #dfe5e4;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .slider-scrollbar-thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 25%;
+    background: #143c3c;
+    border-radius: 999px;
+    cursor: grab;
+  }
+
+  .p10-m{
+  padding: 0px;
+}
+
+.footer-inner {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 60px;
+    }
+
+    .footer-brand {
+        flex: 2;
+        max-width: 420px;
+    }
+
+    .footer-cta,
+    .footer-links,
+    .footer-contact,
+    .footer-legal {
+        flex: 1;
+        min-width: 200px;
+    }
+
 
 
 }
