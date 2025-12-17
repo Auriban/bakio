@@ -6,6 +6,8 @@
 let reviewsCarousel, reviewsScrollbar, reviewsThumb;
 let isReviewsDragging = false;
 let reviewsStartX, reviewsStartScrollLeft;
+let reviewsCurrentIndex = 0;
+
 
 // Slider principal (cards sabor y calma)
 let mainSlider, mainScrollbar, mainThumb;
@@ -53,7 +55,8 @@ async function loadReviews() {
     });
 
     setTimeout(() => {
-      recalcReviewsThumb();
+      recalcReviewsThumb();   // ajusta barra en desktop
+      updateReviewsMobile();  // recoloca el carrusel en móvil cuando ya hay .review-card
     }, 200);
   } catch (error) {
     console.error("Error cargando reviews:", error);
@@ -61,25 +64,78 @@ async function loadReviews() {
 }
 
 // ================================
-// SCROLLBAR PERSONALIZADA REVIEWS
+// REVIEWS: SLIDER MÓVIL + SCROLLBAR DESKTOP
 // ================================
-function initReviewsScrollbar() {
+
+function initReviews() {
   reviewsCarousel  = document.getElementById("reviewsCarousel");
   reviewsScrollbar = document.querySelector(".reviews-scrollbar");
   reviewsThumb     = document.querySelector(".reviews-scrollbar .scrollbar-thumb");
 
+  const prevBtn = document.getElementById('reviewsPrev');
+  const nextBtn = document.getElementById('reviewsNext');
+
   if (!reviewsCarousel || !reviewsScrollbar || !reviewsThumb) {
     console.error("No se encuentran elementos del carrusel de reviews");
-    return false;
+    return;
+  }
+
+  // Botones móvil
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (!isDesktop()) moveReviewsSlide(reviewsCurrentIndex - 1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (!isDesktop()) moveReviewsSlide(reviewsCurrentIndex + 1);
+    });
   }
 
   setupReviewsEvents();
   recalcReviewsThumb();
-  return true;
+  updateReviewsMobile();
+}
+
+// mover en móvil (1 card visible)
+function updateReviewsMobile() {
+  if (!reviewsCarousel) return;
+
+  if (isDesktop()) {
+    reviewsCarousel.style.transform = 'translateX(0)';
+    return;
+  }
+
+  const cards = reviewsCarousel.querySelectorAll('.review-card');
+  const total = cards.length;
+  if (!total) return;
+
+  const offset = -reviewsCurrentIndex * 100;
+  reviewsCarousel.style.transform = `translateX(${offset}%)`;
+}
+
+function moveReviewsSlide(index) {
+  const cards = reviewsCarousel.querySelectorAll('.review-card');
+  const total = cards.length;
+  if (!total) return;
+
+  if (index < 0) index = total - 1;
+  if (index >= total) index = 0;
+
+  reviewsCurrentIndex = index;
+  updateReviewsMobile();
+}
+
+function initReviewsScrollbar() {
+  // mantenemos esta función por compatibilidad con tu init actual
+  initReviews();
 }
 
 function recalcReviewsThumb() {
   if (!reviewsCarousel || !reviewsScrollbar || !reviewsThumb) return;
+  if (!isDesktop()) {
+    reviewsThumb.style.display = "none";
+    return;
+  }
 
   const visibleWidth = reviewsCarousel.clientWidth;
   const totalWidth   = reviewsCarousel.scrollWidth;
@@ -101,10 +157,11 @@ function recalcReviewsThumb() {
 
 function updateReviewsThumbPosition() {
   if (!reviewsCarousel || !reviewsScrollbar || !reviewsThumb) return;
+  if (!isDesktop()) return;
 
-  const trackWidth   = reviewsScrollbar.clientWidth;
-  const thumbWidth   = reviewsThumb.clientWidth;
-  const maxScroll    = reviewsCarousel.scrollWidth - reviewsCarousel.clientWidth;
+  const trackWidth = reviewsScrollbar.clientWidth;
+  const thumbWidth = reviewsThumb.clientWidth;
+  const maxScroll  = reviewsCarousel.scrollWidth - reviewsCarousel.clientWidth;
 
   if (maxScroll <= 0) {
     reviewsThumb.style.transform = "translateX(0px)";
@@ -119,29 +176,36 @@ function updateReviewsThumbPosition() {
 }
 
 function setupReviewsEvents() {
+  // Scroll desktop → mueve thumb
   reviewsCarousel.addEventListener("scroll", updateReviewsThumbPosition);
 
+  // Drag del thumb (solo desktop)
   reviewsThumb.addEventListener("mousedown", startReviewsDrag);
   document.addEventListener("mousemove", doReviewsDrag);
   document.addEventListener("mouseup", endReviewsDrag);
 
+  // Click en barra
   reviewsScrollbar.addEventListener("click", handleReviewsTrackClick);
 
-  window.addEventListener("resize", recalcReviewsThumb);
+  // Resize ventana
+  window.addEventListener("resize", () => {
+    recalcReviewsThumb();
+    updateReviewsMobile();
+  });
 }
 
 function startReviewsDrag(e) {
-  if (!reviewsCarousel || !reviewsThumb) return;
+  if (!reviewsCarousel || !reviewsThumb || !isDesktop()) return;
 
-  isReviewsDragging   = true;
-  reviewsStartX       = e.clientX;
+  isReviewsDragging      = true;
+  reviewsStartX          = e.clientX;
   reviewsStartScrollLeft = reviewsCarousel.scrollLeft;
   document.body.style.userSelect = "none";
   e.preventDefault();
 }
 
 function doReviewsDrag(e) {
-  if (!isReviewsDragging || !reviewsCarousel || !reviewsScrollbar || !reviewsThumb) return;
+  if (!isReviewsDragging || !reviewsCarousel || !reviewsScrollbar || !reviewsThumb || !isDesktop()) return;
 
   const trackWidth     = reviewsScrollbar.clientWidth;
   const thumbWidth     = reviewsThumb.clientWidth;
@@ -161,7 +225,7 @@ function endReviewsDrag() {
 }
 
 function handleReviewsTrackClick(e) {
-  if (e.target === reviewsThumb || !reviewsCarousel || !reviewsScrollbar || !reviewsThumb) return;
+  if (e.target === reviewsThumb || !reviewsCarousel || !reviewsScrollbar || !reviewsThumb || !isDesktop()) return;
 
   const rect       = reviewsScrollbar.getBoundingClientRect();
   const clickX     = e.clientX - rect.left;
@@ -176,6 +240,7 @@ function handleReviewsTrackClick(e) {
   const scrollRatio = maxScroll / maxThumbTravel;
   reviewsCarousel.scrollLeft = thumbCenter * scrollRatio;
 }
+
 
 // ================================
 // SLIDERS PRINCIPALES (MULTIINSTANCIA)

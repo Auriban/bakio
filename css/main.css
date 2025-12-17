@@ -1401,7 +1401,7 @@ a{
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      z-index: 50;
+      z-index: 99999;
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.2s, visibility 0.2s;
@@ -1745,6 +1745,49 @@ a{
 .slider-viewport {
   width: 100%;
   overflow: hidden;
+}
+
+/* Flechas reviews (MOBILE FIRST) */
+.reviews-wrapper {
+  position: relative;
+}
+
+/* Botones flecha solo móvil */
+.reviews-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  border: none;
+  background: rgba(22, 36, 71, 0.9);
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.reviews-arrow--prev { left: 10px; }
+.reviews-arrow--next { right: 10px; }
+
+/* Para que el contenido no quede pegado a los bordes detrás de las flechas */
+.reviews-viewport {
+  position: relative;
+  overflow: hidden; /* móvil: 1 slide visible, el JS mueve con translateX */
+}
+
+/* En móvil el carrusel se mueve con transform (no scroll) */
+.reviews-carousel {
+  display: flex;
+  gap: 20px;
+  padding: 30px 20px;
+  justify-content: flex-start;
+  transition: transform 0.4s ease;
 }
 
 /* el slider ahora es una fila que movemos con transform */
@@ -2178,6 +2221,25 @@ a{
 .mt-200{
   margin-top: -200px;
 }
+
+
+.reviews-arrow {
+    display: none;
+  }
+
+  .reviews-viewport {
+    overflow: visible;
+  }
+
+  .reviews-carousel {
+    transform: none;          /* el JS lo deja a 0 pero reforzamos */
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  }
+
+  .reviews-carousel::-webkit-scrollbar {
+    display: none;
+  }
 
 
 .gallery {

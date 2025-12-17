@@ -48,8 +48,6 @@
                         <input type="date">
                     </div>
 
-                    <span class="arrow">→</span>
-
                     <div class="field">
                         <input type="date">
                     </div>
@@ -419,18 +417,28 @@
         </section>
 
         <section class="reviews-section mb150">
-            <p class="reviews-subtitle">Escucha las opiniones de otros huéspedes</p>
-            <h2 class="reviews-title">4.98 Airbnb y 4.6 Booking puntuación</h2>
+        <p class="reviews-subtitle">Escucha las opiniones de otros huéspedes</p>
+        <h2 class="reviews-title">4.98 Airbnb y 4.6 Booking puntuación</h2>
 
+        <!-- Contenedor general -->
+        <div class="reviews-wrapper">
+            <!-- Flechas solo móvil (las puedes ocultar en desktop con CSS) -->
+            <button class="reviews-arrow reviews-arrow--prev" id="reviewsPrev">&#10094;</button>
+            <button class="reviews-arrow reviews-arrow--next" id="reviewsNext">&#10095;</button>
+
+            <div class="reviews-viewport">
             <div class="reviews-carousel" id="reviewsCarousel">
-            <!-- aquí las cards -->
+                <!-- aquí JS inyecta .review-card -->
             </div>
-
-            <div class="reviews-scrollbar">
-                <div class="scrollbar-thumb"></div>
             </div>
+        </div>
 
+        <!-- Scrollbar (solo desktop) -->
+        <div class="reviews-scrollbar">
+            <div class="scrollbar-thumb"></div>
+        </div>
         </section>
+
 
         <section class="mb100">
             <article class="flexi w80">
