@@ -109,9 +109,12 @@ function updateReviewsMobile() {
   const total = cards.length;
   if (!total) return;
 
-  const offset = -reviewsCurrentIndex * 100;
-  reviewsCarousel.style.transform = `translateX(${offset}%)`;
+  const cardWidth = cards[0].getBoundingClientRect().width;
+  const offset = -reviewsCurrentIndex * cardWidth;
+
+  reviewsCarousel.style.transform = `translateX(${offset}px)`;
 }
+
 
 function moveReviewsSlide(index) {
   const cards = reviewsCarousel.querySelectorAll('.review-card');

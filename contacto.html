@@ -105,9 +105,8 @@
 
         
 <section class="modulo-reservas">
-
   <!-- BLOQUE 1: texto + calendario -->
-  <div class="reservas-top">
+  <div class="reservas-top section">
     <div class="reservas-texto">
       <h2>Consulta nuestro calendario y elige las fechas que mejor se adapten a tu visita.</h2>
       <p>
@@ -117,58 +116,63 @@
     </div>
 
     <div class="reservas-calendario" id="calendario">
-      <!-- aquí podrías incrustar tu widget real -->
-      <div class="calendario-mock">
-        <p class="calendario-title">AUGUST 2025</p>
-        <div class="calendario-grid">
-          <span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span>
+      <div id="smoobuApartment3077631en" class="calendarWidget">
+        <div
+          class="calendarContent"
+          data-load-calendar-url="https://login.smoobu.com/en/cockpit/widget/single-calendar/3077631"
+          data-verification="97670288eac869da383fdd4e3e74e25b47a1825a4339b3db30ffbd5b4016f5e2"
+          data-baseUrl="https://login.smoobu.com"
+          data-disable-css="false">
         </div>
-        <button class="btn-calendario">Book now</button>
+        <script
+          type="text/javascript"
+          src="https://login.smoobu.com/js/Apartment/CalendarWidget.js">
+        </script>
       </div>
     </div>
   </div>
 
   <!-- BLOQUE 2: consultas + formulario -->
   <div class="reservas-bottom">
-    <aside class="consultas-menu">
-      <p class="consultas-label">Consultas</p>
-      <button class="consultas-item consultas-item--activo">Haz una Pregunta</button>
-      <button class="consultas-item">Solicitud Especial</button>
-      <button class="consultas-item">Danos tu Opinión</button>
-    </aside>
+    <div class="reservas-bottom-inner">
+      <aside class="consultas-menu">
+        <p class="consultas-label">Consultas</p>
+        <button class="consultas-item consultas-item--activo">Haz una Pregunta</button>
+        <button class="consultas-item">Solicitud Especial</button>
+        <button class="consultas-item">Danos tu Opinión</button>
+      </aside>
 
-    <form class="consultas-form">
-      <div class="fila fila--dos">
-        <label>
-          Nombre
-          <input type="text" name="nombre">
-        </label>
-        <label>
-          Apellidos
-          <input type="text" name="apellidos">
-        </label>
-      </div>
+      <form class="consultas-form">
+        <div class="fila fila--dos">
+          <label>
+            Nombre
+            <input type="text" name="nombre">
+          </label>
+          <label>
+            Apellidos
+            <input type="text" name="apellidos">
+          </label>
+        </div>
 
-      <div class="fila">
-        <label>
-          Email
-          <input type="email" name="email">
-        </label>
-      </div>
+        <div class="fila">
+          <label>
+            Email
+            <input type="email" name="email">
+          </label>
+        </div>
 
-      <div class="fila">
-        <label>
-          Tu mensaje
-          <textarea name="mensaje" rows="4"></textarea>
-        </label>
-      </div>
+        <div class="fila">
+          <label>
+            Tu mensaje
+            <textarea name="mensaje" rows="4"></textarea>
+          </label>
+        </div>
 
-      <button type="submit" class="btn-enviar">Enviar &raquo;</button>
-    </form>
+        <button type="submit" class="btn-enviar">Enviar &raquo;</button>
+      </form>
+    </div>
   </div>
 </section>
-
-
 
     </main>
     <footer></footer>

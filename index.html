@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Balcón de Bakio</title>
-
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
+    
 
 </head>
 
@@ -47,12 +46,55 @@
                     <h1>EL BALCÓN DE BAKIO</h1>
                 </div>
 
+                <form id="bookingForm" class="search-bar">
+                    <div class="field">
+                      <input type="date" id="checkin" required>  
+                    </div>
+                    <div class="field">
+                        <input type="date" id="checkout" required>
+                    </div>
+                    
+                    
+                    <div class="field">
+                    <select id="guests">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    </div>
 
-                <div id="apartmentIframeAll">
-                    <script type="text/javascript"
-                        src="https://login.smoobu.com/js/Settings/BookingToolIframe.js"></script>
-                    <script>BookingToolIframe.initialize({ "url": "https://login.smoobu.com/es/booking-tool/iframe/1567476?newTabAfterSearch=true", "baseUrl": "https://login.smoobu.com", "target": "#apartmentIframeAll" })</script>
-                </div>
+                    <button class="btn-reservar" type="submit">Reservar</button>
+                </form>
+
+                <script>
+                document.getElementById("bookingForm").addEventListener("submit", function(e){
+                e.preventDefault();
+
+                const checkin = document.getElementById("checkin").value;
+                const checkout = document.getElementById("checkout").value;
+                const guests = document.getElementById("guests").value;
+
+                const url = `https://booking.smoobu.com/9A1567476?checkin=${checkin}&checkout=${checkout}&adults=${guests}`;
+
+                window.location.href = url;
+                });
+                </script>
+
+
+
+        <!-- <div id="apartmentIframeAll" class="search-bar">
+        <script type="text/javascript"
+            src="https://login.smoobu.com/js/Settings/BookingToolIframe.js"></script>
+        <script>
+            BookingToolIframe.initialize({
+            url: "https://login.smoobu.com/es/booking-tool/iframe/1567476?newTabAfterSearch=true",
+            baseUrl: "https://login.smoobu.com",
+            target: "#apartmentIframeAll"
+            })
+        </script>
+        </div> -->
+
 
             </div>
         </section>
@@ -497,7 +539,7 @@
 
         <section class="reviews-section mb150">
             <p class="reviews-subtitle">Escucha las opiniones de otros huéspedes</p>
-            <h2 class="reviews-title">4.98 Airbnb y 4.6 Booking puntuación</h2>
+            <h2 class="reviews-title">Puntuación <br> 4.98 Airbnb y 4.6 Booking </h2>
 
             <!-- Contenedor general -->
             <div class="reviews-wrapper">
@@ -517,7 +559,6 @@
                 <div class="scrollbar-thumb"></div>
             </div>
         </section>
-
 
         <section class="mb100">
             <article class="flexi w80">
@@ -595,9 +636,6 @@
 
             </div>
         </section>
-
-
-
     </main>
     <footer></footer>
     <script src="js/main.js"></script>

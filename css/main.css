@@ -168,6 +168,7 @@ a{
 .white{
   color: white;
 }
+
 /* ===== Header ===== */
     .header {
       position: fixed;
@@ -229,100 +230,147 @@ a{
       letter-spacing: .06em;
     }
 
-    /* ===== Menú fullscreen ===== */
-    .menu-overlay {
-      position: fixed;
-      inset: 0;
-      background:black;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity .4s ease, visibility .4s ease;
-      z-index: 2000;
-    }
+ /* ===== Header flotante ===== */
+.header {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
 
-    .menu-overlay.active {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: all;
-    }
+.menu-wrapper {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 10px 14px;
+  gap: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
 
-    .menu-overlay nav ul {
-      list-style: none;
-      text-align: center;
-    }
+/* ===== Hamburguesa ===== */
+.hamburger {
+  width: 28px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
 
-    .menu-overlay nav ul li {
-      margin: 20px 0;
-    }
+.hamburger span {
+  height: 2px;
+  width: 100%;
+  background: #1c2b2b;
+  transition: 0.4s ease;
+}
 
-    .menu-overlay nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 300;
-      font-family: 'Montserrat', Arial, sans-serif;
-      transition: opacity .3s ease;
-    }
+/* Animación X */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
 
-    .menu-overlay nav ul li a:hover {
-      opacity: .6;
-        font-weight: 400;
-    }
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
 
-    .menu-close {
-      position: absolute;
-      top: 24px;
-      right: 28px;
-      font-size: 32px;
-      color: white;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      z-index: 9999;
-    }
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
 
-  .menu-overlay {
-    position: fixed;
-    inset: 0;
-    /* Rayas sólidas azules/blancas de fondo */
-    background:
-      repeating-linear-gradient(
-        90deg,
-        #1e40af 0px,
-        #1e40af 15px,
-        #ffffff 15px,
-        #ffffff 30px
-      );
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .4s ease, visibility .4s ease;
-    z-index: 2000;
-  }
+/* ===== Botón Reservar ===== */
+.btn-reservar {
+  background: #8FAAAD;
+  color: #ffffff;
+  padding: 10px 28px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 500;
+  font-family: "Montserrat", Arial, sans-serif;
+  letter-spacing: 0.06em;
+}
 
-/* Overlay oscuro OPACO encima de las rayas */
+/* ===== Menú fullscreen ===== */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+
+  /* Rayas sólidas azules/blancas de fondo */
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #1e40af 0px,
+      #1e40af 15px,
+      #ffffff 15px,
+      #ffffff 30px
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  z-index: 2000;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+
+/* Overlay oscuro encima de las rayas */
 .menu-overlay::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(15, 23, 42, 0.95); /* Azul muy oscuro, casi opaco */
+  background: rgba(15, 23, 42, 0.95);
   z-index: 1;
 }
 
-/* El contenido del menú por encima */
+/* Contenido del menú por encima del overlay */
 .menu-overlay nav {
   position: relative;
   z-index: 2;
-  /* Sombra extra para las letras */
+}
+
+.menu-overlay nav ul {
+  list-style: none;
+  text-align: center;
+}
+
+.menu-overlay nav ul li {
+  margin: 20px 0;
 }
 
 .menu-overlay nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  font-family: "Montserrat", Arial, sans-serif;
+  transition: opacity 0.3s ease;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+}
+
+.menu-overlay nav ul li a:hover {
+  opacity: 0.6;
+  font-weight: 400;
+}
+
+/* Botón cerrar menú */
+.menu-close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  font-size: 32px;
+  color: #ffffff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 9999;
 }
 
 
@@ -401,6 +449,7 @@ a{
     color: #EDE8E2;
     margin: 0;
 }
+
 
 /* Mobile-first: glassmorphic sobrio */
 .search-bar {
@@ -782,49 +831,6 @@ a{
     touch-action: none;
 }
 
-.galeria-cerca-nosotros {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  gap: 20px;
-  padding: 30px 0;
-}
-
-.galeria-slider-mobile {
-  width: 100vw;
-  overflow-x: auto;
-  display: flex;
-  gap: 10px;
-  scroll-snap-type: x mandatory;
-}
-
-.galeria-slider-mobile img {
-  width: 80vw;
-  height: 42vw;
-  object-fit: cover;
-  scroll-snap-align: center;
-  flex-shrink: 0;
-}
-
-.galeria-info-mobile {
-  width: 90vw;
-  background: #ece6de;
-  border-radius: 10px;
-  padding: 25px 18px;
-  margin: 0 auto;
-  color: #444;
-  text-align: left;
-  font-size: 17px;
-}
-
-.galeria-info-mobile .subtitulo {
-  font-size: 1.2em;
-  color: #404066;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
 /* CONTENEDOR GENERAL */
 .cerca-nosotros {
   width: 100%;
@@ -847,16 +853,27 @@ a{
   transform: translate(-50%, -50%);
   width: 85vw;
   max-width: 500px;
-  background: #ece6de;
+  background: #ece6ded3;
   padding: 64px 40px;
   box-shadow: 0 4px 18px rgba(0,0,0,0.3);
   z-index: 2;
 }
 
-/* SLIDER móvil: ocupa todo el fondo del contenedor */
+/* ===== Galería cerca de nosotros (mobile first) ===== */
+
+.galeria-cerca-nosotros {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+  padding: 30px 0;
+}
+
+/* Slider móvil: ocupa todo el fondo del contenedor */
 .galeria-slider-mobile {
   width: 100%;
-  height: 65vh;          /* alto en móvil */
+  height: 65vh;        /* alto en móvil */
   position: relative;
   overflow: hidden;
 }
@@ -864,7 +881,7 @@ a{
 /* Todas las slides apiladas una encima de otra */
 .galeria-slider-mobile .slide {
   position: absolute;
-  inset: 0;              /* top:0, right:0, bottom:0, left:0 */
+  inset: 0;            /* top:0, right:0, bottom:0, left:0 */
   opacity: 0;
   transition: opacity 0.6s ease;
 }
@@ -878,6 +895,25 @@ a{
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* Info debajo en móvil */
+.galeria-info-mobile {
+  width: 90vw;
+  background: #ece6de;
+  border-radius: 10px;
+  padding: 25px 18px;
+  margin: 0 auto;
+  color: #444;
+  text-align: left;
+  font-size: 17px;
+}
+
+.galeria-info-mobile .subtitulo {
+  font-size: 1.2em;
+  color: #404066;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 /* Galería desktop inicialmente oculta (mobile first) */
@@ -1252,7 +1288,7 @@ a{
     background-color: #8FAAAD;
     transform: translateY(-2px);
 }
-
+overlay
 .seccion-gradiente {
   background: linear-gradient(to bottom, 
     rgba(255, 255, 255, 0.9) 0%,    /* Arriba: muy sutil (blanco casi transparente) */
@@ -1324,6 +1360,12 @@ a{
     padding-top: 50px;
 }
 
+
+#secondPartHeader h2{
+  margin-bottom: 20px!important;
+  text-transform: lowercase!important;
+  letter-spacing: 1px!important;
+}
 
 .seccion-transicion {
     position: relative;
@@ -1775,21 +1817,25 @@ a{
 .reviews-arrow--prev { left: 10px; }
 .reviews-arrow--next { right: 10px; }
 
-/* Para que el contenido no quede pegado a los bordes detrás de las flechas */
+/* viewport móvil: solo 1 card visible */
 .reviews-viewport {
   position: relative;
-  overflow: hidden; /* móvil: 1 slide visible, el JS mueve con translateX */
+  overflow: hidden;
 }
 
-/* En móvil el carrusel se mueve con transform (no scroll) */
+/* fila que movemos con transform */
 .reviews-carousel {
   display: flex;
-  gap: 20px;
-  padding: 30px 20px;
-  justify-content: flex-start;
+  gap: 0;                  /* importante: 0 en móvil */
+  padding: 0;              /* sin padding lateral en móvil */
+  transform: translateX(0);
   transition: transform 0.4s ease;
 }
 
+/* cada card = 100% del viewport */
+.review-card {
+  flex: 0 0 100%;
+}
 /* el slider ahora es una fila que movemos con transform */
 .slider {
   display: flex;
@@ -1935,6 +1981,156 @@ a{
   transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
 }
 
+
+.modulo-reservas {
+  background: #f4f1ec;
+  padding: 80px 0 0;
+}
+
+/* TOP: texto + calendario */
+.reservas-top.section {
+  max-width: 1100px;
+  margin: 0 auto 80px;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.reservas-texto h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.2rem;
+  font-style: italic;
+  font-weight: 500;
+  color: #3d4a47;
+  line-height: 1.3;
+  margin-bottom: 18px;
+}
+
+.reservas-texto p {
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  color: #7a8584;
+  line-height: 1.7;
+  max-width: 320px;
+}
+
+
+
+
+/* ========== BLOQUE INFERIOR: CONSULTAS + FORMULARIO ========== */
+
+.reservas-bottom {
+  background: #6f898c;
+  margin-top: 80px;
+  padding: 40px 0 60px;
+}
+
+/* Wrapper interior para seguir el mismo ancho que arriba */
+.reservas-bottom-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Menú lateral de consultas */
+.consultas-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  color: #e9f1f1;
+}
+
+.consultas-label {
+  font-family: "Nunito", sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.7;
+}
+
+.consultas-item {
+  text-align: left;
+  padding: 10px 18px;
+  border-radius: 4px;
+  border: none;
+  background: transparent;
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  color: #d6e3e3;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.consultas-item--activo {
+  background: rgba(0,0,0,0.35);
+  color: #ffffff;
+}
+
+/* Formulario rosa claro */
+.consultas-form {
+  background: #f3d6c3;
+  border-radius: 2px;
+  padding: 32px 30px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.fila {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fila--dos {
+  flex-direction: column;
+}
+
+.consultas-form label {
+  font-family: "Nunito", sans-serif;
+  font-size: 0.9rem;
+  color: #3d3d3d;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.consultas-form input,
+.consultas-form textarea {
+  border: none;
+  border-bottom: 2px solid rgba(0,0,0,0.2);
+  border-radius: 0;
+  background: transparent;
+  padding: 6px 0;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.95rem;
+  color: #3d3d3d;
+  outline: none;
+}
+
+.consultas-form input:focus,
+.consultas-form textarea:focus {
+  border-bottom-color: #ffffff;
+}
+
+/* Botón “Enviar »” alineado abajo derecha */
+.btn-enviar {
+  align-self: flex-end;
+  margin-top: 10px;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #ffffff;
+  cursor: pointer;
+}
+
 /*......................ESTILOS DE GRID.............................*/ 
 
 /*==========================================================
@@ -1967,13 +2163,6 @@ a{
 
 .col-12 { width: 100%; }
 
-}
-
-/*==========================================================
-                        992px
-============================================================*/
-
-@media (min-width: 768px) {
 
   .img-lg {
     display: block;
@@ -2126,6 +2315,7 @@ a{
   .cerca-card {
     max-width: 650px;
     padding: 150px 80px;
+    background: #ece6de;
   }
 
 
@@ -2227,20 +2417,59 @@ a{
     display: none;
   }
 
-  .reviews-viewport {
+   .reviews-viewport {
     overflow: visible;
   }
 
   .reviews-carousel {
-    transform: none;          /* el JS lo deja a 0 pero reforzamos */
+    padding: 40px 60px;
+    gap: 25px;
+    transform: none;
     overflow-x: auto;
-    scroll-behavior: smooth;
   }
 
-  .reviews-carousel::-webkit-scrollbar {
-    display: none;
+  .review-card {
+    flex: 0 0 45%; /* o tus valores desktop */
+    padding: 35px;
   }
 
+
+
+
+  .reservas-top.section {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .reservas-texto {
+    flex: 0 0 40%;
+  }
+
+  .reservas-calendario {
+    flex: 0 0 60%;
+  }
+
+  .reservas-bottom-inner {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .consultas-menu {
+    flex: 0 0 32%;
+  }
+
+  .consultas-form {
+    flex: 1;
+  }
+
+  .fila--dos {
+    flex-direction: row;
+    gap: 18px;
+  }
+
+  .fila--dos label {
+    flex: 1;
+  }
 
 .gallery {
         padding: 4rem 2.5rem;
@@ -2453,6 +2682,13 @@ a{
   .hero-content h2 {
     font-size: 2rem;
   }
+   #apartmentIframeAll.search-bar {
+    max-width: 900px;     /* o el ancho que uses en el hero */
+  }
+
+  #apartmentIframeAll iframe {
+    min-height: 120px;
+  }
 
 
 }
@@ -2663,36 +2899,37 @@ a{
         font-size: 80px;
     }
 
-    .galeria-cerca-nosotros {
-        flex-direction: row;
-        gap: 0;
-        justify-content: center;
-        align-items: stretch;
-        position: relative;
-        padding: 0;
-        height: 90vh;
-    }
+ .galeria-cerca-nosotros {
+    flex-direction: row;
+    gap: 0;
+    justify-content: center;
+    align-items: stretch;
+    position: relative;
+    padding: 0;
+    height: 90vh;
+  }
 
-    .galeria-slider-mobile {
-        display: none; /* en desktop oculto slider móvil */
-    }
+  /* En desktop ocultamos el slider móvil porque usarás galería desktop */
+  .galeria-slider-mobile {
+    display: none;
+  }
 
-    .galeria-info-mobile {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-50%);
-        min-width: 470px;
-        max-width: 38vw;
-        min-height: 290px;
-        padding: 55px 42px;
-        border-radius: 0;
-        font-size: 19px;
-        box-shadow: 0 4px 18px rgba(0,0,0,0.13);
-        background: #ece6de;
-        text-align: center;
-        z-index: 2;
-    }
+  .galeria-info-mobile {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 470px;
+    max-width: 38vw;
+    min-height: 290px;
+    padding: 55px 42px;
+    border-radius: 0;
+    font-size: 19px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.13);
+    background: #ece6de;
+    text-align: center;
+    z-index: 2;
+  }
 
     /* CONTENEDOR GENERAL */
   .ubicacion-wrapper {
