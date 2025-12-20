@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,62 +12,60 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
         rel="stylesheet">
-    
+
 
 </head>
 
 <body>
     <header class="header">
         <div class="menu-wrapper">
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <a href="#" class="btn-reservar" id="btnReservarHeader">RESERVAR</a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <a href="#" class="btn-reservar" id="btnReservarHeader">RESERVAR</a>
         </div>
     </header>
 
     <!-- Menú desplegable -->
     <div class="menu-overlay" id="menu">
         <button class="menu-close" aria-label="Cerrar menú">&times;</button>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="alojamiento.html">Alojamiento</a></li>
-                    <li><a href="recomendados.html">Recomendaciones</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                </ul>
-            </nav>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="alojamiento.html">Alojamiento</a></li>
+                <li><a href="recomendados.html">Recomendaciones</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
     </div>
 
-        <!-- Modal reservas -->
+    <!-- Modal reservas -->
     <div class="modal-overlay" id="modalReservas">
-      <div class="modal">
-        <div class="modal-header">
-          <h2>Reserva tu estancia</h2>
-          <button class="btn-close" id="cerrarReservas" aria-label="Cerrar">&times;</button>
-          <span class="drag-indicator"></span>
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Reserva tu estancia</h2>
+                <button class="btn-close" id="cerrarReservas" aria-label="Cerrar">&times;</button>
+                <span class="drag-indicator"></span>
+            </div>
+            <div class="modal-content">
+                <div id="apartmentIframe3077631"></div>
+            </div>
         </div>
-        <div class="modal-content">
-          <div id="apartmentIframe3077631"></div>
-        </div>
-      </div>
     </div>
 
     <!-- Script Smoobu -->
-    <script 
-      type="text/javascript" 
-      src="https://login.smoobu.com/js/Settings/BookingToolIframe.js">
+    <script type="text/javascript" src="https://login.smoobu.com/js/Settings/BookingToolIframe.js">
     </script>
     <script>
-      BookingToolIframe.initialize({
-        url: "https://login.smoobu.com/es/booking-tool/iframe/1567476/3077631?newTabAfterSearch=true",
-        baseUrl: "https://login.smoobu.com",
-        target: "#apartmentIframe3077631"
-      });
+        BookingToolIframe.initialize({
+            url: "https://login.smoobu.com/es/booking-tool/iframe/1567476/3077631",
+            baseUrl: "https://login.smoobu.com",
+            target: "#apartmentIframe3077631"
+        });
     </script>
-    
+
     <main>
         <section class="fportada">
             <div class="fportada-content">
