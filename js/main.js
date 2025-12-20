@@ -456,6 +456,7 @@ function initModalOverlay() {
 // ================================
 // MENÚ HAMBURGUESA
 // ================================
+
 function initHamburgerMenu() {
   const hamburger = document.getElementById('hamburger');
   const menu      = document.getElementById('menu');
@@ -477,6 +478,48 @@ function initHamburgerMenu() {
 }
 
 // ================================
+// MENÚ MODAL
+// ================================
+function initReservasModal() {
+  const btnReservar = document.getElementById('btnReservarHeader');
+  const modalReservas = document.getElementById('modalReservas');
+  const cerrarReservas = document.getElementById('cerrarReservas');
+
+  if (!btnReservar || !modalReservas || !cerrarReservas) return;
+
+  function abrir() {
+    modalReservas.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function cerrar() {
+    modalReservas.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  btnReservar.addEventListener('click', (e) => {
+    e.preventDefault();
+    abrir();
+  });
+
+  cerrarReservas.addEventListener('click', cerrar);
+
+  modalReservas.addEventListener('click', (e) => {
+    if (e.target === modalReservas) {
+      cerrar();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') cerrar();
+  });
+}
+
+
+
+
+
+// ================================
 // INICIALIZAR TODO
 // ================================
 document.addEventListener("DOMContentLoaded", function() {
@@ -488,4 +531,5 @@ document.addEventListener("DOMContentLoaded", function() {
   initVideoModal();
   initModalOverlay();
   initHamburgerMenu();
+  initReservasModal(); 
 });

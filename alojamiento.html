@@ -13,14 +13,14 @@
 
 </head>
 <body>
-    <header class="header">
+       <header class="header">
         <div class="menu-wrapper">
         <div class="hamburger" id="hamburger">
             <span></span>
             <span></span>
             <span></span>
         </div>
-        <a href="contacto.html#calendario" class="btn-reservar">RESERVAR</a>
+        <a href="#" class="btn-reservar" id="btnReservarHeader">RESERVAR</a>
         </div>
     </header>
 
@@ -36,35 +36,38 @@
                 </ul>
             </nav>
     </div>
+
+        <!-- Modal reservas -->
+    <div class="modal-overlay" id="modalReservas">
+      <div class="modal">
+        <div class="modal-header">
+          <h2>Reserva tu estancia</h2>
+          <button class="btn-close" id="cerrarReservas" aria-label="Cerrar">&times;</button>
+          <span class="drag-indicator"></span>
+        </div>
+        <div class="modal-content">
+          <div id="apartmentIframe3077631"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script Smoobu -->
+    <script 
+      type="text/javascript" 
+      src="https://login.smoobu.com/js/Settings/BookingToolIframe.js">
+    </script>
+    <script>
+      BookingToolIframe.initialize({
+        url: "https://login.smoobu.com/es/booking-tool/iframe/1567476/3077631?newTabAfterSearch=true",
+        baseUrl: "https://login.smoobu.com",
+        target: "#apartmentIframe3077631"
+      });
+    </script>
     <main>
         <section class="fportada1">
             <div class="fportada-content">
                 <div>
                     <h1>EL BALCÓN DE BAKIO</h1>
-                </div>
-
-                <div class="search-bar">
-                    <div class="field">
-                        <input type="date">
-                    </div>
-
-                    <span class="arrow">→</span>
-
-                    <div class="field">
-                        <input type="date">
-                    </div>
-
-                    <div class="field">
-                        <select>
-                            <option selected>Huéspedes</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
-                    </div>
-
-                    <button class="btn-reservar">Reservar</button>
                 </div>
             </div>
         </section>

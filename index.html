@@ -18,84 +18,61 @@
 <body>
     <header class="header">
         <div class="menu-wrapper">
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <a href="contacto.html#calendario" class="btn-reservar">RESERVAR</a>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <a href="#" class="btn-reservar" id="btnReservarHeader">RESERVAR</a>
         </div>
     </header>
 
     <!-- Menú desplegable -->
     <div class="menu-overlay" id="menu">
         <button class="menu-close" aria-label="Cerrar menú">&times;</button>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="alojamiento.html">Alojamiento</a></li>
-                <li><a href="recomendados.html">Recomendaciones</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="alojamiento.html">Alojamiento</a></li>
+                    <li><a href="recomendados.html">Recomendaciones</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
     </div>
+
+        <!-- Modal reservas -->
+    <div class="modal-overlay" id="modalReservas">
+      <div class="modal">
+        <div class="modal-header">
+          <h2>Reserva tu estancia</h2>
+          <button class="btn-close" id="cerrarReservas" aria-label="Cerrar">&times;</button>
+          <span class="drag-indicator"></span>
+        </div>
+        <div class="modal-content">
+          <div id="apartmentIframe3077631"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script Smoobu -->
+    <script 
+      type="text/javascript" 
+      src="https://login.smoobu.com/js/Settings/BookingToolIframe.js">
+    </script>
+    <script>
+      BookingToolIframe.initialize({
+        url: "https://login.smoobu.com/es/booking-tool/iframe/1567476/3077631?newTabAfterSearch=true",
+        baseUrl: "https://login.smoobu.com",
+        target: "#apartmentIframe3077631"
+      });
+    </script>
+    
     <main>
         <section class="fportada">
             <div class="fportada-content">
                 <div>
                     <h1>EL BALCÓN DE BAKIO</h1>
                 </div>
-
-                <form id="bookingForm" class="search-bar">
-                    <div class="field">
-                      <input type="date" id="checkin" required>  
-                    </div>
-                    <div class="field">
-                        <input type="date" id="checkout" required>
-                    </div>
-                    
-                    
-                    <div class="field">
-                    <select id="guests">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
-                    </div>
-
-                    <button class="btn-reservar" type="submit">Reservar</button>
-                </form>
-
-                <script>
-                document.getElementById("bookingForm").addEventListener("submit", function(e){
-                e.preventDefault();
-
-                const checkin = document.getElementById("checkin").value;
-                const checkout = document.getElementById("checkout").value;
-                const guests = document.getElementById("guests").value;
-
-                const url = `https://booking.smoobu.com/9A1567476?checkin=${checkin}&checkout=${checkout}&adults=${guests}`;
-
-                window.location.href = url;
-                });
-                </script>
-
-
-
-        <!-- <div id="apartmentIframeAll" class="search-bar">
-        <script type="text/javascript"
-            src="https://login.smoobu.com/js/Settings/BookingToolIframe.js"></script>
-        <script>
-            BookingToolIframe.initialize({
-            url: "https://login.smoobu.com/es/booking-tool/iframe/1567476?newTabAfterSearch=true",
-            baseUrl: "https://login.smoobu.com",
-            target: "#apartmentIframeAll"
-            })
-        </script>
-        </div> -->
-
-
             </div>
         </section>
 
